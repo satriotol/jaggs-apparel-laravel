@@ -10,7 +10,7 @@
                         <path class="logo-fill-white" fill="#FFF" d="M11 4v25l8 4V0z" />
                     </g>
                 </svg>
-                <span class="brand-name">Sleek Dashboard</span>
+                <span class="brand-name">Jaggs Apparel</span>
             </a>
         </div>
         <!-- begin sidebar scrollbar -->
@@ -492,48 +492,15 @@
                                     </div>
                                 </ul>
                             </li>
-
-
-
-
-
                             <li>
                                 <a class="sidenav-item-link" href="rtl.html">
                                     <span class="nav-text">RTL Direction</span>
-
                                 </a>
                             </li>
-
-
-
-
                         </div>
                     </ul>
                 </li>
-
-
-
             </ul>
-
-        </div>
-
-        <hr class="separator" />
-
-        <div class="sidebar-footer">
-            <div class="sidebar-footer-content">
-                <h6 class="text-uppercase">
-                    Cpu Uses <span class="float-right">40%</span>
-                </h6>
-                <div class="progress progress-xs">
-                    <div class="progress-bar active" style="width: 40%;" role="progressbar"></div>
-                </div>
-                <h6 class="text-uppercase">
-                    Memory Uses <span class="float-right">65%</span>
-                </h6>
-                <div class="progress progress-xs">
-                    <div class="progress-bar progress-bar-warning" style="width: 65%;" role="progressbar"></div>
-                </div>
-            </div>
         </div>
     </div>
 </aside>

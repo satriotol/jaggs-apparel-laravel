@@ -7,15 +7,6 @@
 
         <div class="navbar-right ml-auto">
             <ul class="nav navbar-nav">
-                <!-- Github Link Button -->
-                <li class="github-link mr-3">
-                    <a class="btn btn-outline-secondary btn-sm" href="https://github.com/tafcoder/sleek-dashboard"
-                        target="_blank">
-                        <span class="d-none d-md-inline-block mr-2">Source Code</span>
-                        <i class="mdi mdi-github-circle"></i>
-                    </a>
-
-                </li>
                 <li class="dropdown notifications-menu">
                     <button class="dropdown-toggle" data-toggle="dropdown">
                         <i class="mdi mdi-bell-outline"></i>
@@ -95,7 +86,11 @@
                         </li>
 
                         <li class="dropdown-footer">
-                            <a href="signin.html"> <i class="mdi mdi-logout"></i> Log Out </a>
+                            <form action="{{route('logout')}}" method="POST">
+                                @csrf
+                                <a href="{{ route('logout') }}" onclick="event.preventDefault();
+                                this.closest('form').submit();"> <i class="mdi mdi-logout"></i> Log Out </a>
+                            </form>
                         </li>
                     </ul>
                 </li>

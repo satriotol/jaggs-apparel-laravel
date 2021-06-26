@@ -4,10 +4,7 @@
     <!-- Recent Order Table -->
     <div class="card card-table-border-none" id="recent-orders">
         <div class="card-header justify-content-between">
-            <h2>Recent Orders</h2>
-            <div class="date-range-report ">
-                <span>May 28, 2021 - Jun 26, 2021</span>
-            </div>
+            <h2>Products</h2>
             <a class="btn btn-primary" href="{{route("product.create")}}">
                 Create
             </a>

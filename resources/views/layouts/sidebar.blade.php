@@ -63,6 +63,12 @@
 
                                 </a>
                             </li>
+                            <li class="">
+                                <a class="sidenav-item-link" href="{{route("age.index")}}">
+                                    <span class="nav-text">Product Age</span>
+
+                                </a>
+                            </li>
                         </div>
                     </ul>
                 </li>

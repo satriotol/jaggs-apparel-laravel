@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AgeController;
 use App\Http\Controllers\ProductCategoryController;
 use App\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\Route;
@@ -25,5 +26,6 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 
 Route::resources([
     'product' => ProductController::class,
-    'productcategory' => ProductCategoryController::class
+    'productcategory' => ProductCategoryController::class,
+    'age' => AgeController::class
 ]);

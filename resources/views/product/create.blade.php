@@ -7,9 +7,9 @@
     <div class="card-body">
         <form>
             <div class="form-group">
-                <label for="exampleFormControlInput1">Name</label>
+                <label for="exampleFormControlInput1">Product Name</label>
                 <input type="text" class="form-control" name="name" id="exampleFormControlInput1"
-                    placeholder="Enter Email">
+                    placeholder="Enter Product Name">
             </div>
             <div class="form-group">
                 <label for="exampleFormControlTextarea1">Description</label>
@@ -17,17 +17,21 @@
             </div>
             <div class="form-group">
                 <label for="exampleFormControlSelect12">Category</label>
-                <select class="form-control" id="exampleFormControlSelect12">
-                    <option>1</option>
-                    <option>2</option>
-                    <option>3</option>
-                    <option>4</option>
-                    <option>5</option>
+                <select class="form-control" id="exampleFormControlSelect12" name="category_id">
+                    <option>Select Category</option>
+                    @foreach ($categories as $category)
+                    <option value="{{$category->id}}">{{$category->name}}</option>
+                    @endforeach
                 </select>
             </div>
             <div class="form-group">
-                <label for="exampleFormControlFile1">Example file input</label>
-                <input type="file" class="form-control-file" id="exampleFormControlFile1">
+                <label for="exampleFormControlSelect12">Category</label>
+                <select class="form-control" id="exampleFormControlSelect12" name="age_id">
+                    <option>Select Category</option>
+                    @foreach ($categories as $category)
+                    <option value="{{$category->id}}">{{$category->name}}</option>
+                    @endforeach
+                </select>
             </div>
             <div class="form-footer pt-4 pt-5 mt-4 border-top">
                 <button type="submit" class="btn btn-primary btn-default">Submit</button>

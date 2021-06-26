@@ -18,13 +18,13 @@
 
             <!-- sidebar menu -->
             <ul class="nav sidebar-inner" id="sidebar-menu">
-                <li class="has-sub active expand">
+                <li class="has-sub">
                     <a class="sidenav-item-link" href="javascript:void(0)" data-toggle="collapse"
                         data-target="#dashboard" aria-expanded="false" aria-controls="dashboard">
                         <i class="mdi mdi-view-dashboard-outline"></i>
                         <span class="nav-text">Dashboard</span> <b class="caret"></b>
                     </a>
-                    <ul class="collapse show" id="dashboard" data-parent="#sidebar-menu">
+                    <ul class="collapse" id="dashboard" data-parent="#sidebar-menu">
                         <div class="sub-menu">
                             <li class="active">
                                 <a class="sidenav-item-link" href="index.html">
@@ -43,27 +43,29 @@
                         </div>
                     </ul>
                 </li>
-                <li class="has-sub">
+                <li
+                    class="has-sub {{Request::routeIs('product.*','productcategory.*','age.*') ? 'active expand' : ''}}">
                     <a class="sidenav-item-link" href="javascript:void(1)" data-toggle="collapse" data-target="#product"
                         aria-expanded="false" aria-controls="product">
                         <i class="mdi mdi-view-dashboard-outline"></i>
                         <span class="nav-text">Product</span> <b class="caret"></b>
                     </a>
-                    <ul class="collapse" id="product" data-parent="#sidebar-menu">
+                    <ul class="collapse {{Request::routeIs('product.*','productcategory.*','age.*') ? 'show' : ''}}"
+                        id="product" data-parent="#sidebar-menu">
                         <div class="sub-menu">
-                            <li class="active">
+                            <li class="{{Request::routeIs('product.*') ? 'active' : ''}}">
                                 <a class="sidenav-item-link" href="{{route("product.index")}}">
                                     <span class="nav-text">All Product</span>
 
                                 </a>
                             </li>
-                            <li class="">
+                            <li class="{{Request::routeIs('productcategory.*') ? 'active' : ''}}">
                                 <a class="sidenav-item-link" href="{{route("productcategory.index")}}">
                                     <span class="nav-text">Product Category</span>
 
                                 </a>
                             </li>
-                            <li class="">
+                            <li class="{{Request::routeIs('age.*') ? 'active' : ''}}">
                                 <a class="sidenav-item-link" href="{{route("age.index")}}">
                                     <span class="nav-text">Product Age</span>
 

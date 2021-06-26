@@ -1,13 +1,14 @@
 @extends('layouts.main')
 @section('content')
+@include('partials.success')
+@include('partials.error')
 <div class="row">
     <div class="col-md-6">
         <div class="card card-default">
             <div class="card-header card-header-border-bottom">
                 <h2>Product Detail</h2>
             </div>
-            @include('partials.success')
-            @include('partials.error')
+
             <div class="card-body">
 
                 <div class="form-group">
@@ -57,14 +58,43 @@
         </div>
     </div>
     <div class="col-md-6">
-        <div class="card card-default">
-            <div class="card-header card-header-border-bottom">
+        <div class="card card-table-border-none" id="recent-orders">
+            <div class="card-header justify-content-between">
                 <h2>Product Quantity</h2>
+                <a class="btn btn-primary" href="{{route("quantity.create",$product->id)}}">
+                    Create
+                </a>
             </div>
-            @include('partials.success')
-            @include('partials.error')
-            <div class="card-body">
+            <div class="card-body pt-0 pb-5">
+                <table class="table card-table table-responsive table-responsive-large" style="width:100%">
+                    <thead>
+                        <tr>
+                            <th>Size</th>
+                            <th>Unit</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach ($quantities as $quantity)
+                        <tr>
+                            <td>{{$quantity->size}}</td>
+                            <td>{{$quantity->unit}}</td>
+                            <td>
+                                {{-- <a href="{{route('quantity.edit',$quantity->id)}}" class="badge
+                                badge-warning">Edit</a>
+                                <form action="{{route('quantity.destroy',$quantity->id)}}" class="d-inline"
+                                    method="POST">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button class="badge badge-danger" onclick="return confirm('Are you sure?')"
+                                        type="submit">Delete</button>
+                                </form> --}}
+                            </td>
+                        </tr>
+                        @endforeach
 
+                    </tbody>
+                </table>
             </div>
         </div>
     </div>

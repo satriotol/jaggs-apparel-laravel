@@ -65,7 +65,8 @@ class ProductController extends Controller
     {
         $categories = ProductCategory::all();
         $ages = Age::all();
-        return view('product.show', compact('product', 'categories', 'ages'));
+        $quantities = Quantity::where('product_id', $product->id)->get();
+        return view('product.show', compact('product', 'categories', 'ages', 'quantities'));
     }
 
     /**
@@ -80,15 +81,14 @@ class ProductController extends Controller
         $ages = Age::all();
         return view('product.create', compact('product', 'categories', 'ages'));
     }
-    public function quantity_index(Product $product)
+    public function quantity_create(Product $product)
     {
         return view('quantity.create', compact('product'));
     }
 
-    public function quantity_store(QuantityCreateRequest $request, Product $product)
+    public function quantity_store(QuantityCreateRequest $request)
     {
         $data = $request->all();
-        // $data['product_id'] = $product->id;
         Quantity::create($data);
         session()->flash('success', 'Product Created Successfully');
         return redirect(route('product.show', $request->product_id));

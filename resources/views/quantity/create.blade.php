@@ -13,7 +13,7 @@
             @if (isset($quantity))
             @method('PUT')
             @endif
-            <input type="text" name="product_id" value="{{$product->id}}">
+            <input type="hidden" name="product_id" value="{{$product->id}}">
             <div class="form-row">
                 <div class="col-md-6">
                     <div class="form-group">

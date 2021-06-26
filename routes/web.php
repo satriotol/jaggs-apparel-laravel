@@ -27,6 +27,6 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
         'productcategory' => ProductCategoryController::class,
         'age' => AgeController::class
     ]);
-    Route::get('quantity/create/{product}', [ProductController::class, 'quantity_index'])->name('quantity.index');
+    Route::get('quantity/create/{product}', [ProductController::class, 'quantity_create'])->name('quantity.create');
     Route::post('quantity/create/', [ProductController::class, 'quantity_store'])->name('quantity.store');
 });

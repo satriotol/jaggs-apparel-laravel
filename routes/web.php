@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AgeController;
+use App\Http\Controllers\GalleryController;
 use App\Http\Controllers\ProductCategoryController;
 use App\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\Route;
@@ -25,9 +26,12 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     Route::resources([
         'product' => ProductController::class,
         'productcategory' => ProductCategoryController::class,
-        'age' => AgeController::class
+        'age' => AgeController::class,
+
     ]);
     Route::get('quantity/create/{product}', [ProductController::class, 'quantity_create'])->name('quantity.create');
     Route::post('quantity/create/', [ProductController::class, 'quantity_store'])->name('quantity.store');
     Route::delete('quantity/delete/{quantity}', [ProductController::class, 'quantity_destroy'])->name('quantity.destroy');
+    Route::get('gallery/create/{product}', [GalleryController::class, 'create'])->name('gallery.create');
+    Route::post('gallery/create/', [GalleryController::class, 'store'])->name('gallery.store');
 });

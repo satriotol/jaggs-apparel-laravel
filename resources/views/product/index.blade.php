@@ -8,6 +8,8 @@
             <a class="btn btn-primary" href="{{route("product.create")}}">
                 Create
             </a>
+            @include('partials.success')
+            @include('partials.error')
         </div>
         <div class="card-body pt-0 pb-5">
             <table class="table card-table table-responsive table-responsive-large" style="width:100%">
@@ -16,7 +18,7 @@
                         <th>Product Name</th>
                         <th>Price</th>
                         <th>Category</th>
-                        <th>Price</th>
+                        <th>Age</th>
                         <th></th>
                     </tr>
                 </thead>
@@ -28,7 +30,7 @@
                         </td>
                         <td>Rp {{number_format($product->price,2)}}</td>
                         <td>{{$product->category->name}}</td>
-                        <td>Oct 20, 2018</td>
+                        <td>{{$product->age->name}}</td>
                         <td class="text-right">
                             <div class="dropdown show d-inline-block widget-dropdown">
                                 <a class="dropdown-toggle icon-burger-mini" href="" role="button"

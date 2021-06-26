@@ -89,7 +89,13 @@ class ProductCategoryController extends Controller
      */
     public function destroy(ProductCategory $productcategory)
     {
+        if ($productcategory->products->count() > 0) {
+            session()->flash('error', 'Category cannot be deleted because it has some product.');
+            // dd($productcategory);
+            return redirect()->back();
+        }
         $productcategory->delete();
+        session()->flash('success', 'Kategori Deleted Successfully');
         return redirect(route("productcategory.index"));
     }
 }

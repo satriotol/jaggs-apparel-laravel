@@ -42,11 +42,11 @@
                 </select>
             </div>
             <div class="form-group">
-                <label for="exampleFormControlSelect12">Category</label>
+                <label for="exampleFormControlSelect12">Age</label>
                 <select class="form-control" id="exampleFormControlSelect12" name="age_id">
-                    <option>Select Category</option>
-                    @foreach ($categories as $category)
-                    <option value="{{$category->id}}">{{$category->name}}</option>
+                    <option>Select Age</option>
+                    @foreach ($ages as $age)
+                    <option value="{{$age->id}}">{{$age->name}}</option>
                     @endforeach
                 </select>
             </div>

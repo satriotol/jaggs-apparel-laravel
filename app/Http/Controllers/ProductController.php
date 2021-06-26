@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\ProductCreateRequest;
+use App\Models\Age;
 use App\Models\Product;
 use App\Models\ProductCategory;
 use Illuminate\Http\Request;
@@ -30,7 +31,8 @@ class ProductController extends Controller
     public function create()
     {
         $categories = ProductCategory::all();
-        return view("product.create", compact('categories'));
+        $ages = Age::all();
+        return view("product.create", compact('categories', 'ages'));
     }
 
     /**

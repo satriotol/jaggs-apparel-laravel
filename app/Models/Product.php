@@ -16,4 +16,8 @@ class Product extends Model
     {
         return $this->belongsTo(ProductCategory::class, 'category_id', 'id');
     }
+    public function age()
+    {
+        return $this->belongsTo(Age::class, 'age_id', 'id');
+    }
 }

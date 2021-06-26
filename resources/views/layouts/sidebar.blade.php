@@ -44,7 +44,7 @@
                     </ul>
                 </li>
                 <li class="has-sub">
-                    <a class="sidenav-item-link" href="javascript:void(0)" data-toggle="collapse" data-target="#product"
+                    <a class="sidenav-item-link" href="javascript:void(1)" data-toggle="collapse" data-target="#product"
                         aria-expanded="false" aria-controls="product">
                         <i class="mdi mdi-view-dashboard-outline"></i>
                         <span class="nav-text">Product</span> <b class="caret"></b>
@@ -53,15 +53,13 @@
                         <div class="sub-menu">
                             <li class="active">
                                 <a class="sidenav-item-link" href="{{route("product.index")}}">
-                                    <span class="nav-text">Index</span>
+                                    <span class="nav-text">All Product</span>
 
                                 </a>
                             </li>
-                            <li>
-                                <a class="sidenav-item-link" href="analytics.html">
-                                    <span class="nav-text">Analytics</span>
-
-                                    <span class="badge badge-success">new</span>
+                            <li class="">
+                                <a class="sidenav-item-link" href="{{route("productcategory.index")}}">
+                                    <span class="nav-text">Product Category</span>
 
                                 </a>
                             </li>

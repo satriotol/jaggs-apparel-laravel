@@ -4,11 +4,13 @@
     <!-- Recent Order Table -->
     <div class="card card-table-border-none" id="recent-orders">
         <div class="card-header justify-content-between">
-            <h2>Product Category</h2>
-            <a class="btn btn-primary" href="{{route("productcategory.create")}}">
+            <h2>Age Product</h2>
+            <a class="btn btn-primary" href="{{route("age.create")}}">
                 Create
             </a>
         </div>
+        @include('partials.success')
+        @include('partials.error')
         <div class="card-body pt-0 pb-5">
             <table class="table card-table table-responsive table-responsive-large" style="width:100%">
                 <thead>
@@ -23,7 +25,12 @@
                         <td>{{$age->name}}</td>
                         <td>
                             <a href="{{route('age.edit',$age->id)}}" class="badge badge-warning">Edit</a>
-                            <button class="badge badge-danger">Delete</button>
+                            <form action="{{route('age.destroy',$age->id)}}" class="d-inline" method="POST">
+                                @csrf
+                                @method('DELETE')
+                                <button class="badge badge-danger" onclick="return confirm('Are you sure?')"
+                                    type="submit">Delete</button>
+                            </form>
                         </td>
                     </tr>
                     @endforeach

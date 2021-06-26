@@ -8,9 +8,9 @@
             <a class="btn btn-primary" href="{{route("product.create")}}">
                 Create
             </a>
-            @include('partials.success')
-            @include('partials.error')
         </div>
+        @include('partials.success')
+        @include('partials.error')
         <div class="card-body pt-0 pb-5">
             <table class="table card-table table-responsive table-responsive-large" style="width:100%">
                 <thead>
@@ -19,7 +19,7 @@
                         <th>Price</th>
                         <th>Category</th>
                         <th>Age</th>
-                        <th></th>
+                        <th>Action</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -31,20 +31,14 @@
                         <td>Rp {{number_format($product->price,2)}}</td>
                         <td>{{$product->category->name}}</td>
                         <td>{{$product->age->name}}</td>
-                        <td class="text-right">
-                            <div class="dropdown show d-inline-block widget-dropdown">
-                                <a class="dropdown-toggle icon-burger-mini" href="" role="button"
-                                    id="dropdown-recent-order1" data-toggle="dropdown" aria-haspopup="true"
-                                    aria-expanded="false" data-display="static"></a>
-                                <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdown-recent-order1">
-                                    <li class="dropdown-item">
-                                        <a href="#">View</a>
-                                    </li>
-                                    <li class="dropdown-item">
-                                        <a href="#">Remove</a>
-                                    </li>
-                                </ul>
-                            </div>
+                        <td>
+                            <a href="{{route('product.edit',$product->id)}}" class="badge badge-warning">Edit</a>
+                            <form action="{{route('product.destroy',$product->id)}}" class="d-inline" method="POST">
+                                @csrf
+                                @method('DELETE')
+                                <button class="badge badge-danger" onclick="return confirm('Are you sure?')"
+                                    type="submit">Delete</button>
+                            </form>
                         </td>
                     </tr>
                     @endforeach

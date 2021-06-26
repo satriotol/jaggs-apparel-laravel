@@ -47,6 +47,7 @@ class ProductController extends Controller
         $data['slug'] = Str::slug($request->name);
 
         Product::create($data);
+        session()->flash('success', 'Product Created Successfully');
         return redirect(route('product.index'));
     }
 
@@ -90,8 +91,10 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Product $product)
     {
-        //
+        $product->delete();
+        session()->flash('success', 'Kategori Deleted Successfully');
+        return redirect(route("product.index"));
     }
 }

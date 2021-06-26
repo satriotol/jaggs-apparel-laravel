@@ -11,4 +11,9 @@ class Age extends Model
 
     protected $table = 'ages';
     protected $fillable = ['name'];
+
+    public function products()
+    {
+        return $this->hasMany(Product::class, 'age_id', 'id');
+    }
 }

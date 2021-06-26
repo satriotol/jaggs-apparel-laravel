@@ -39,6 +39,7 @@ class AgeController extends Controller
     {
         $data = $request->all();
         Age::create($data);
+        session()->flash('success', 'Age Created Successfully');
         return redirect(route('age.index'));
     }
 
@@ -82,8 +83,14 @@ class AgeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy()
+    public function destroy(Age $age)
     {
-        //
+        if ($age->products->count() > 0) {
+            session()->flash('error', 'Age cannot be deleted because it has some product.');
+            return redirect()->back();
+        }
+        $age->delete();
+        session()->flash('success', 'Kategori Deleted Successfully');
+        return redirect(route("age.index"));
     }
 }

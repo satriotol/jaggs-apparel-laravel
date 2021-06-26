@@ -81,14 +81,14 @@
                             <td>{{$quantity->unit}}</td>
                             <td>
                                 {{-- <a href="{{route('quantity.edit',$quantity->id)}}" class="badge
-                                badge-warning">Edit</a>
+                                badge-warning">Edit</a> --}}
                                 <form action="{{route('quantity.destroy',$quantity->id)}}" class="d-inline"
                                     method="POST">
                                     @csrf
                                     @method('DELETE')
                                     <button class="badge badge-danger" onclick="return confirm('Are you sure?')"
                                         type="submit">Delete</button>
-                                </form> --}}
+                                </form>
                             </td>
                         </tr>
                         @endforeach

@@ -85,13 +85,18 @@ class ProductController extends Controller
     {
         return view('quantity.create', compact('product'));
     }
-
     public function quantity_store(QuantityCreateRequest $request)
     {
         $data = $request->all();
         Quantity::create($data);
-        session()->flash('success', 'Product Created Successfully');
+        session()->flash('success', 'Quantity Created Successfully');
         return redirect(route('product.show', $request->product_id));
+    }
+    public function quantity_destroy(Quantity $quantity)
+    {
+        $quantity->delete();
+        session()->flash('success', 'Quantity Deleted Successfully');
+        return redirect()->back();
     }
 
     /**

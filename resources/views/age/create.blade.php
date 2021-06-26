@@ -4,17 +4,8 @@
     <div class="card-header card-header-border-bottom">
         <h2>Age Product Form</h2>
     </div>
-    @if ($errors->any())
-    <div class="alert alert-danger">
-        <ul class="list-group">
-            @foreach ($errors->all() as $error)
-            <li class="list-group-item text-danger">
-                {{$error}}
-            </li>
-            @endforeach
-        </ul>
-    </div>
-    @endif
+    @include('partials.success')
+    @include('partials.error')
     <div class="card-body">
         <form action="@isset($age) {{route('age.update', $age->id)}} @endisset @empty($age) {{route('age.store')}}
             @endempty" method="POST">

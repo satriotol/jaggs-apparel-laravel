@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\AgeCreateRequest;
+use App\Http\Requests\AgeUpdateRequest;
 use App\Models\Age;
 use Illuminate\Http\Request;
 
@@ -49,9 +50,8 @@ class AgeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show()
     {
-        //
     }
 
     /**
@@ -60,9 +60,9 @@ class AgeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Age $age)
     {
-        //
+        return view('age.create', compact('age'));
     }
 
     /**
@@ -72,9 +72,12 @@ class AgeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(AgeUpdateRequest $request, Age $age)
     {
-        //
+        $data = $request->all();
+        $age->update($data);
+        session()->flash('success', 'Age Updated Successfully');
+        return redirect(route('age.index'));
     }
 
     /**

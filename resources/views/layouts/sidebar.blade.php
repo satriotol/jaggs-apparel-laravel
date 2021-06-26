@@ -49,7 +49,7 @@
                         <i class="mdi mdi-view-dashboard-outline"></i>
                         <span class="nav-text">Product</span> <b class="caret"></b>
                     </a>
-                    <ul class="collapse show" id="product" data-parent="#sidebar-menu">
+                    <ul class="collapse" id="product" data-parent="#sidebar-menu">
                         <div class="sub-menu">
                             <li class="active">
                                 <a class="sidenav-item-link" href="{{route("product.index")}}">

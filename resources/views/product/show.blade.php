@@ -106,16 +106,14 @@
                 <table class="table card-table table-responsive table-responsive-large" style="width:100%">
                     <thead>
                         <tr>
-                            <th>Size</th>
-                            <th>Unit</th>
+                            <th>Photo</th>
                             <th>Action</th>
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ($quantities as $quantity)
+                        @foreach ($galleries as $gallery)
                         <tr>
-                            <td>{{$quantity->size}}</td>
-                            <td>{{$quantity->unit}}</td>
+                            <td><img src="{{asset('storage/'.$gallery->photo)}}" height="100px" alt=""></td>
                             <td>
                                 <form action="{{route('quantity.destroy',$quantity->id)}}" class="d-inline"
                                     method="POST">

@@ -42,7 +42,7 @@ class GalleryController extends Controller
             ProductGallery::create([
                 'product_id' => $request->product_id,
                 'is_default' => $request->is_default,
-                'photo' => $photo->store('gallery')
+                'photo' => $photo->store('gallery', 'public')
             ]);
         }
         session()->flash('success', 'Gallery Created Successfully');

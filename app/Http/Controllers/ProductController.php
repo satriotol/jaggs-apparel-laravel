@@ -9,6 +9,7 @@ use App\Models\Age;
 use App\Models\Category;
 use App\Models\Product;
 use App\Models\ProductCategory;
+use App\Models\ProductGallery;
 use App\Models\Quantity;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
@@ -66,7 +67,8 @@ class ProductController extends Controller
         $categories = ProductCategory::all();
         $ages = Age::all();
         $quantities = Quantity::where('product_id', $product->id)->get();
-        return view('product.show', compact('product', 'categories', 'ages', 'quantities'));
+        $galleries = ProductGallery::where('product_id', $product->id)->get();
+        return view('product.show', compact('product', 'categories', 'ages', 'quantities', 'galleries'));
     }
 
     /**

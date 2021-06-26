@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\ProductCategoryRequest;
+use App\Http\Requests\ProductCategoryUpdateRequest;
 use App\Models\ProductCategory;
 use Illuminate\Http\Request;
 
@@ -60,9 +61,9 @@ class ProductCategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(ProductCategory $productcategory)
     {
-        //
+        return view('product_category.create')->with('productcategory', $productcategory);
     }
 
     /**
@@ -72,9 +73,12 @@ class ProductCategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(ProductCategoryUpdateRequest $request, ProductCategory $productcategory)
     {
-        //
+        $productcategory->update([
+            'name' => $request->name
+        ]);
+        return redirect(route("productcategory.index"));
     }
 
     /**

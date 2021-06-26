@@ -25,8 +25,9 @@
                     <tr>
                         <td>{{$category->name}}</td>
                         <td>
-                            <div class="badge badge-warning">Edit</div>
-                            <div class="badge badge-danger">Delete</div>
+                            <a href="{{route('productcategory.edit',$category->id)}}"
+                                class="badge badge-warning">Edit</a>
+                            <button class="badge badge-danger">Delete</button>
                         </td>
                     </tr>
                     @endforeach

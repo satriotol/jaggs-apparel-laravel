@@ -4,10 +4,12 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\ProductCreateRequest;
 use App\Http\Requests\ProductUpdateRequest;
+use App\Http\Requests\QuantityCreateRequest;
 use App\Models\Age;
 use App\Models\Category;
 use App\Models\Product;
 use App\Models\ProductCategory;
+use App\Models\Quantity;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 
@@ -59,9 +61,11 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Product $product)
     {
-        //
+        $categories = ProductCategory::all();
+        $ages = Age::all();
+        return view('product.show', compact('product', 'categories', 'ages'));
     }
 
     /**
@@ -75,6 +79,19 @@ class ProductController extends Controller
         $categories = ProductCategory::all();
         $ages = Age::all();
         return view('product.create', compact('product', 'categories', 'ages'));
+    }
+    public function quantity_index(Product $product)
+    {
+        return view('quantity.create', compact('product'));
+    }
+
+    public function quantity_store(QuantityCreateRequest $request, Product $product)
+    {
+        $data = $request->all();
+        // $data['product_id'] = $product->id;
+        Quantity::create($data);
+        session()->flash('success', 'Product Created Successfully');
+        return redirect(route('product.show', $request->product_id));
     }
 
     /**

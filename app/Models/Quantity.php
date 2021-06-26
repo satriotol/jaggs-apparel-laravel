@@ -8,4 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class Quantity extends Model
 {
     use HasFactory;
+    protected $table = 'quantities';
+    protected $fillable = ['product_id', 'size', 'unit'];
 }

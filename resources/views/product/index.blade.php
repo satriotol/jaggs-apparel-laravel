@@ -26,7 +26,7 @@
                     @foreach ($products as $product)
                     <tr>
                         <td>
-                            <a class="text-dark" href=""> {{$product->name}}</a>
+                            <a class="text-dark" href="{{route('product.show',$product->id)}}"> {{$product->name}}</a>
                         </td>
                         <td>Rp {{number_format($product->price,2)}}</td>
                         <td>{{$product->category->name}}</td>

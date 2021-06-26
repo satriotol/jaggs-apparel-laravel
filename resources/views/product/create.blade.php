@@ -57,7 +57,7 @@
             </div>
             <div class="form-footer pt-4 pt-5 mt-4 border-top">
                 <button type="submit" class="btn btn-primary btn-default">Submit</button>
-                <button class="btn btn-secondary btn-default">Cancel</button>
+                <a href="{{ URL::previous() }}" class="btn btn-secondary btn-default">Cancel</a>
             </div>
         </form>
     </div>

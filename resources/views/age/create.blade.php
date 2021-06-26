@@ -20,6 +20,8 @@
             </div>
             <div class="form-footer pt-4 pt-5 mt-4 text-right">
                 <button type="submit" class="btn btn-primary btn-default">Submit</button>
+                <a href="{{ URL::previous() }}" class="btn btn-secondary btn-default">Cancel</a>
+
             </div>
         </form>
     </div>

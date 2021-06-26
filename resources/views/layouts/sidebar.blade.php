@@ -10,7 +10,7 @@
                         <path class="logo-fill-white" fill="#FFF" d="M11 4v25l8 4V0z" />
                     </g>
                 </svg>
-                <span class="brand-name">Jaggs Apparel</span>
+                <span class="brand-name">JAGGS ADMIN</span>
             </a>
         </div>
         <!-- begin sidebar scrollbar -->
@@ -18,42 +18,24 @@
 
             <!-- sidebar menu -->
             <ul class="nav sidebar-inner" id="sidebar-menu">
-                <li class="has-sub">
-                    <a class="sidenav-item-link" href="javascript:void(0)" data-toggle="collapse"
-                        data-target="#dashboard" aria-expanded="false" aria-controls="dashboard">
-                        <i class="mdi mdi-view-dashboard-outline"></i>
-                        <span class="nav-text">Dashboard</span> <b class="caret"></b>
+                <li class="{{Request::routeIs('dashboard') ? 'active expand' : ''}}"">
+                    <a class=" sidenav-item-link" href="{{route('dashboard')}}" aria-expanded="false"
+                    aria-controls="dashboard">
+                    <i class="mdi mdi-view-dashboard-outline"></i>
+                    <span class="nav-text">Dashboard</span>
                     </a>
-                    <ul class="collapse" id="dashboard" data-parent="#sidebar-menu">
-                        <div class="sub-menu">
-                            <li class="active">
-                                <a class="sidenav-item-link" href="index.html">
-                                    <span class="nav-text">Ecommerce</span>
-
-                                </a>
-                            </li>
-                            <li>
-                                <a class="sidenav-item-link" href="analytics.html">
-                                    <span class="nav-text">Analytics</span>
-
-                                    <span class="badge badge-success">new</span>
-
-                                </a>
-                            </li>
-                        </div>
-                    </ul>
                 </li>
                 <li
-                    class="has-sub {{Request::routeIs('product.*','productcategory.*','age.*') ? 'active expand' : ''}}">
+                    class="has-sub {{Request::routeIs('product.*','productcategory.*','age.*','quantity.*','gallery.*') ? 'active expand' : ''}}">
                     <a class="sidenav-item-link" href="javascript:void(1)" data-toggle="collapse" data-target="#product"
                         aria-expanded="false" aria-controls="product">
-                        <i class="mdi mdi-view-dashboard-outline"></i>
+                        <i class="mdi mdi-tshirt-crew-outline"></i>
                         <span class="nav-text">Product</span> <b class="caret"></b>
                     </a>
-                    <ul class="collapse {{Request::routeIs('product.*','productcategory.*','age.*') ? 'show' : ''}}"
+                    <ul class="collapse {{Request::routeIs('product.*','productcategory.*','age.*','quantity.*','gallery.*') ? 'show' : ''}}"
                         id="product" data-parent="#sidebar-menu">
                         <div class="sub-menu">
-                            <li class="{{Request::routeIs('product.*') ? 'active' : ''}}">
+                            <li class="{{Request::routeIs('product.*','quantity.*','gallery.*') ? 'active' : ''}}">
                                 <a class="sidenav-item-link" href="{{route("product.index")}}">
                                     <span class="nav-text">All Product</span>
 

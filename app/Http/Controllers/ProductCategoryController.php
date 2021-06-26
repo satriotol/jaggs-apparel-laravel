@@ -87,8 +87,9 @@ class ProductCategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(ProductCategory $productcategory)
     {
-        //
+        $productcategory->delete();
+        return redirect(route("productcategory.index"));
     }
 }

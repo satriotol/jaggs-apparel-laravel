@@ -24,7 +24,13 @@
                         <td>
                             <a href="{{route('productcategory.edit',$category->id)}}"
                                 class="badge badge-warning">Edit</a>
-                            <button class="badge badge-danger">Delete</button>
+                            <form action="{{route('productcategory.destroy',$category->id)}}" class="d-inline"
+                                method="POST">
+                                @csrf
+                                @method('DELETE')
+                                <button class="badge badge-danger" onclick="return confirm('Are you sure?')"
+                                    type="submit">Delete</button>
+                            </form>
                         </td>
                     </tr>
                     @endforeach

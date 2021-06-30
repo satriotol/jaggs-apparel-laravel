@@ -27,4 +27,13 @@ class ApiProductController extends Controller
             return ResponseFormatter::error(null, 'Data produk tidak ada', 404);
         };
     }
+    public function detail($slug)
+    {
+        $product = Product::with(['category', 'age', 'galleries'])->where('slug', $slug)->first();
+        if ($product) {
+            return ResponseFormatter::success($product, 'Data Product Berhasil Diambil');
+        } else {
+            return ResponseFormatter::error(null, 'Data produk tidak ada', 404);
+        };
+    }
 }

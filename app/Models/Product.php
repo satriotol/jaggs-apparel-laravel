@@ -20,4 +20,8 @@ class Product extends Model
     {
         return $this->belongsTo(Age::class, 'age_id', 'id');
     }
+    public function galleries()
+    {
+        return $this->hasMany(ProductGallery::class, 'product_id');
+    }
 }

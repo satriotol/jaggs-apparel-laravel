@@ -113,7 +113,7 @@
                     <tbody>
                         @foreach ($galleries as $gallery)
                         <tr>
-                            <td><img src="{{asset('storage/'.$gallery->photo)}}" height="100px" alt=""></td>
+                            <td><img src="{{asset($gallery->photo)}}" height="100px" alt=""></td>
                             <td>
                                 <form action="{{route('quantity.destroy',$quantity->id)}}" class="d-inline"
                                     method="POST">

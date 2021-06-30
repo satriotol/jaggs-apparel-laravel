@@ -9,12 +9,20 @@ use Illuminate\Http\Request;
 
 class ApiProductController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $product = Product::with(['category', 'age', 'galleries'])->get();
+        $slug = $request->input('slug');
+        $product = Product::with(['category', 'age', 'galleries'])->whereHas('galleries')->get();
+        if ($slug) {
+            $product = Product::with(['category', 'age', 'galleries'])->whereHas('galleries')->where('slug', $slug)->first();
+            if ($product) {
+                return ResponseFormatter::success($product, 'Data Product Berhasil Diambil');
+            } else {
+                return ResponseFormatter::error(null, 'Data produk tidak ada', 404);
+            };
+        }
         if ($product) {
             return ResponseFormatter::success($product, 'Data Product Berhasil Diambil');
-            # code...
         } else {
             return ResponseFormatter::error(null, 'Data produk tidak ada', 404);
         };

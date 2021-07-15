@@ -26,7 +26,7 @@ class ProductSeeder extends Seeder
                 'name' => $name,
                 'slug' => Str::slug($name),
                 'weight' => random_int(100, 250),
-                'description' => $faker->text(),
+                'description' => $faker->realText(),
                 'price' => random_int(100000, 200000),
                 'category_id' => random_int(1, 2),
                 'age_id' => random_int(1, 2),

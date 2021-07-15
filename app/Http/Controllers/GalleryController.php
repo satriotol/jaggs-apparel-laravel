@@ -6,6 +6,7 @@ use App\Http\Requests\GalleryCreateRequest;
 use App\Models\Product;
 use App\Models\ProductGallery;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class GalleryController extends Controller
 {
@@ -89,8 +90,11 @@ class GalleryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(ProductGallery $gallery)
     {
-        //
+        $gallery->deletePhoto();
+        $gallery->forceDelete();
+        session()->flash('success', 'Gallery Deleted Successfully');
+        return redirect()->back();
     }
 }

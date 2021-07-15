@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Storage;
 
 class ProductGallery extends Model
 {
@@ -15,8 +16,8 @@ class ProductGallery extends Model
     {
         return $this->belongsTo(Product::class, 'product_id', 'id');
     }
-    public function getPhotoAttribute($value)
+    public function deletePhoto()
     {
-        return url('storage/' . $value);
+        Storage::disk('public')->delete($this->photo);
     }
 }

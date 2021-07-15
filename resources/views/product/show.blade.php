@@ -118,10 +118,9 @@
                     <tbody>
                         @foreach ($galleries as $gallery)
                         <tr>
-                            <td><img src="{{asset($gallery->photo)}}" height="100px" alt=""></td>
+                            <td><img src="{{asset('storage/'.$gallery->photo)}}" height="100px" alt=""></td>
                             <td>
-                                <form action="{{route('quantity.destroy',$quantity->id)}}" class="d-inline"
-                                    method="POST">
+                                <form action="{{route('gallery.destroy',$gallery->id)}}" class="d-inline" method="POST">
                                     @csrf
                                     @method('DELETE')
                                     <button class="badge badge-danger" onclick="return confirm('Are you sure?')"

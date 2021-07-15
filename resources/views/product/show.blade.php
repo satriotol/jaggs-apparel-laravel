@@ -29,6 +29,11 @@
                         rows="3">{{isset($product) ? $product->description : ''}}</textarea>
                 </div>
                 <div class="form-group">
+                    <label for="exampleFormControlTextarea1">Weight</label>
+                    <input type="number" class="form-control" name="weight" disabled
+                        value="{{isset($product) ? $product->weight : ''}}">
+                </div>
+                <div class="form-group">
                     <label for="exampleFormControlSelect12">Category</label>
                     <select class="form-control" id="exampleFormControlSelect12" disabled name="category_id">
                         <option>Select Category</option>

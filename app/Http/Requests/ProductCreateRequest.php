@@ -26,9 +26,10 @@ class ProductCreateRequest extends FormRequest
         return [
             'price' => 'required|integer',
             'name' => 'required|unique:products,name',
+            'weight' => 'required|numeric',
             'description' => 'required',
             'category_id' => 'required',
-            'age_id' => 'required'
+            'age_id' => 'required',
         ];
     }
 }

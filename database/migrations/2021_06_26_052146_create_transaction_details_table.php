@@ -17,6 +17,9 @@ class CreateTransactionDetailsTable extends Migration
             $table->id();
             $table->unsignedBigInteger("product_id");
             $table->unsignedBigInteger("transaction_id");
+            $table->integer('price');
+            $table->integer('qty');
+            $table->integer('weight');
             $table->timestamps();
         });
     }

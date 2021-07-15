@@ -20,6 +20,7 @@ class CreateProductsTable extends Migration
             $table->longText('description');
             $table->unsignedBigInteger('category_id');
             $table->unsignedBigInteger('age_id');
+            $table->integer('weight');
 
             $table->softDeletes();
             $table->timestamps();

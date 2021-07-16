@@ -10,4 +10,13 @@ class ProductSize extends Model
     use HasFactory;
     protected $table = 'product_sizes';
     protected $fillable = ['product_id', 'size_id', 'qty', 'status'];
+
+    public function product()
+    {
+        return $this->belongsTo(Product::class, 'product_id', 'id');
+    }
+    public function size()
+    {
+        return $this->belongsTo(Size::class, 'size_id', 'id');
+    }
 }

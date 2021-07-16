@@ -20,8 +20,14 @@ class ProductSizeController extends Controller
     public function store(ProductSizeRequest $request)
     {
         $data = $request->all();
+        $size = ProductSize::select('qty')->where('product_id', '1')->latest()->get();
+        $qty = $request->qty;
+        if ($request->status === 'IN') {
+            $data['qty'] = $size[0]->toArray()['qty'] + (int)$qty;
+        } else {
+            $data['qty'] = $size[0]->toArray()['qty'] - (int)$qty;
+        }
         ProductSize::create($data);
-
         session()->flash('success', 'Product Size Updated Successfully');
         return redirect(route('product.show', $request->product_id));
     }

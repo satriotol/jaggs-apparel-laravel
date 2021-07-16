@@ -76,13 +76,15 @@
                         <tr>
                             <th>Size</th>
                             <th>Unit</th>
+                            <th>Qty</th>
                         </tr>
                     </thead>
                     <tbody>
                         @foreach ($product_sizes as $product_size)
                         <tr>
-                            <td>{{$product_size->product_id}}</td>
-                            <td>{{$product_size->size_id}}</td>
+                            <td>{{$product_size->product->name}}</td>
+                            <td>{{$product_size->size->name}}</td>
+                            <td>{{$product_size->qty}}</td>
                         </tr>
                         @endforeach
 

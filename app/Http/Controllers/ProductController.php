@@ -10,6 +10,7 @@ use App\Models\Category;
 use App\Models\Product;
 use App\Models\ProductCategory;
 use App\Models\ProductGallery;
+use App\Models\ProductQuantity;
 use App\Models\ProductSize;
 use App\Models\Quantity;
 use Illuminate\Http\Request;
@@ -40,7 +41,6 @@ class ProductController extends Controller
         $ages = Age::all();
         return view("product.create", compact('categories', 'ages'));
     }
-
     /**
      * Store a newly created resource in storage.
      *

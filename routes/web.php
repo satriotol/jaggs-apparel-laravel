@@ -4,6 +4,7 @@ use App\Http\Controllers\AgeController;
 use App\Http\Controllers\GalleryController;
 use App\Http\Controllers\ProductCategoryController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\ProductSizeController;
 use App\Http\Controllers\SizeController;
 use Illuminate\Support\Facades\Route;
 
@@ -37,4 +38,6 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     // Route::delete('quantity/delete/{quantity}', [ProductController::class, 'quantity_destroy'])->name('quantity.destroy');
     Route::get('gallery/create/{product}', [GalleryController::class, 'create'])->name('gallery.create');
     Route::post('gallery/create/', [GalleryController::class, 'store'])->name('gallery.store');
+    Route::get('quantity/create/{product}', [ProductSizeController::class, 'create'])->name('quantity.create');
+    Route::post('quantity/create/', [ProductSizeController::class, 'store'])->name('quantity.store');
 });

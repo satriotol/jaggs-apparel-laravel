@@ -66,9 +66,9 @@
         <div class="card card-table-border-none" id="recent-orders">
             <div class="card-header justify-content-between">
                 <h2>Product Quantity</h2>
-                {{-- <a class="btn btn-primary" href="{{route("quantity.create",$product->id)}}">
-                Create
-                </a> --}}
+                <a class="btn btn-primary" href="{{route("quantity.create",$product->id)}}">
+                    Create
+                </a>
             </div>
             <div class="card-body pt-0 pb-5">
                 <table class="table card-table table-responsive table-responsive-large" style="width:100%">

@@ -21,17 +21,24 @@ class ProductSizeController extends Controller
     {
         $data = $request->all();
         $product_size = ProductSize::where('product_id', $request->product_id)->where('size_id', $request->size_id)->get();
+
         if ($product_size->count() > 0) {
             $size = ProductSize::select('qty')->where('product_id', $request->product_id)->where('size_id', $request->size_id)->latest()->get();
             $qty = $request->qty;
+            $product_size_delete = ProductSize::where('product_id', $request->product_id)->where('size_id', $request->size_id)->firstOrFail();
             if ($request->status === 'IN') {
                 $data['qty'] = $size[0]->toArray()['qty'] + (int)$qty;
+                $product_size_delete->delete();
             } else {
                 $data['qty'] = $size[0]->toArray()['qty'] - (int)$qty;
+                $product_size_delete->delete();
             }
         }
+        // if ($product_size_delete->count() > 0) {
+        //     $product_size_delete->delete();
+        // }
         ProductSize::create($data);
-        session()->flash('success', 'Product Size Updated Successfully');
+        session()->flash('success', 'Product Stock Updated Successfully');
         return redirect(route('product.show', $request->product_id));
     }
 }

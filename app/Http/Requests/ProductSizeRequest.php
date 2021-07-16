@@ -26,7 +26,7 @@ class ProductSizeRequest extends FormRequest
         return [
             'product_id' => 'required',
             'size_id' => 'required',
-            'qty' => 'required|integer',
+            'qty' => 'required|integer|gt:0',
             'status' => 'required|in:IN,OUT'
         ];
     }

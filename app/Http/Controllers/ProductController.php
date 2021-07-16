@@ -10,6 +10,7 @@ use App\Models\Category;
 use App\Models\Product;
 use App\Models\ProductCategory;
 use App\Models\ProductGallery;
+use App\Models\ProductSize;
 use App\Models\Quantity;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
@@ -66,9 +67,9 @@ class ProductController extends Controller
     {
         $categories = ProductCategory::all();
         $ages = Age::all();
-        $quantities = Quantity::where('product_id', $product->id)->get();
         $galleries = ProductGallery::where('product_id', $product->id)->get();
-        return view('product.show', compact('product', 'categories', 'ages', 'quantities', 'galleries'));
+        $product_sizes = ProductSize::where('product_id', $product->id)->get();
+        return view('product.show', compact('product', 'categories', 'ages', 'product_sizes', 'galleries'));
     }
 
     /**
@@ -83,24 +84,6 @@ class ProductController extends Controller
         $ages = Age::all();
         return view('product.create', compact('product', 'categories', 'ages'));
     }
-    public function quantity_create(Product $product)
-    {
-        return view('quantity.create', compact('product'));
-    }
-    public function quantity_store(QuantityCreateRequest $request)
-    {
-        $data = $request->all();
-        Quantity::create($data);
-        session()->flash('success', 'Quantity Created Successfully');
-        return redirect(route('product.show', $request->product_id));
-    }
-    public function quantity_destroy(Quantity $quantity)
-    {
-        $quantity->delete();
-        session()->flash('success', 'Quantity Deleted Successfully');
-        return redirect()->back();
-    }
-
     /**
      * Update the specified resource in storage.
      *

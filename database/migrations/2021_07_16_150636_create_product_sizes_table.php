@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class ChangeValueUnit extends Migration
+class CreateProductSizesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,11 @@ class ChangeValueUnit extends Migration
      */
     public function up()
     {
-        Schema::table('quantities', function (Blueprint $table) {
-            $table->renameColumn('value', 'unit');
+        Schema::create('product_sizes', function (Blueprint $table) {
+            $table->id();
+            $table->unsignedInteger('product_id');
+            $table->unsignedInteger('size_id');
+            $table->timestamps();
         });
     }
 
@@ -25,6 +28,6 @@ class ChangeValueUnit extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('product_sizes');
     }
 }

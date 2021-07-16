@@ -26,13 +26,13 @@
                     </a>
                 </li>
                 <li
-                    class="has-sub {{Request::routeIs('product.*','productcategory.*','age.*','quantity.*','gallery.*') ? 'active expand' : ''}}">
+                    class="has-sub {{Request::routeIs('product.*','productcategory.*','age.*','quantity.*','gallery.*','size.*') ? 'active expand' : ''}}">
                     <a class="sidenav-item-link" href="javascript:void(1)" data-toggle="collapse" data-target="#product"
                         aria-expanded="false" aria-controls="product">
                         <i class="mdi mdi-tshirt-crew-outline"></i>
                         <span class="nav-text">Product</span> <b class="caret"></b>
                     </a>
-                    <ul class="collapse {{Request::routeIs('product.*','productcategory.*','age.*','quantity.*','gallery.*') ? 'show' : ''}}"
+                    <ul class="collapse {{Request::routeIs('product.*','productcategory.*','age.*','quantity.*','gallery.*','size.*') ? 'show' : ''}}"
                         id="product" data-parent="#sidebar-menu">
                         <div class="sub-menu">
                             <li class="{{Request::routeIs('product.*','quantity.*','gallery.*') ? 'active' : ''}}">
@@ -44,13 +44,16 @@
                             <li class="{{Request::routeIs('productcategory.*') ? 'active' : ''}}">
                                 <a class="sidenav-item-link" href="{{route("productcategory.index")}}">
                                     <span class="nav-text">Product Category</span>
-
                                 </a>
                             </li>
                             <li class="{{Request::routeIs('age.*') ? 'active' : ''}}">
                                 <a class="sidenav-item-link" href="{{route("age.index")}}">
                                     <span class="nav-text">Product Age</span>
-
+                                </a>
+                            </li>
+                            <li class="{{Request::routeIs('size.*') ? 'active' : ''}}">
+                                <a class="sidenav-item-link" href="{{route("size.index")}}">
+                                    <span class="nav-text">Product Size</span>
                                 </a>
                             </li>
                         </div>

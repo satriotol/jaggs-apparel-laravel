@@ -118,7 +118,7 @@
                     <tbody>
                         @foreach ($galleries as $gallery)
                         <tr>
-                            <td><img src="{{asset('storage/'.$gallery->photo)}}" height="100px" alt=""></td>
+                            <td><img src="{{$gallery->photo}}" height="100px" alt=""></td>
                             <td>
                                 <form action="{{route('gallery.destroy',$gallery->id)}}" class="d-inline" method="POST">
                                     @csrf

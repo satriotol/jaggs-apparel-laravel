@@ -16,8 +16,13 @@ class ProductGallery extends Model
     {
         return $this->belongsTo(Product::class, 'product_id', 'id');
     }
+    public function getPhotoAttribute($value)
+    {
+        return url('storage/' . $value);
+    }
+
     public function deletePhoto()
     {
-        Storage::disk('public')->delete($this->photo);
+        Storage::disk('public')->delete($this->attributes['photo']);
     }
 }

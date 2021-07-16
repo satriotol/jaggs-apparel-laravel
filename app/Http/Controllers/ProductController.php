@@ -68,7 +68,7 @@ class ProductController extends Controller
         $categories = ProductCategory::all();
         $ages = Age::all();
         $galleries = ProductGallery::where('product_id', $product->id)->get();
-        $product_sizes = ProductSize::where('product_id', $product->id)->latest()->get();
+        $product_sizes = ProductSize::where('product_id', $product->id)->get();
         return view('product.show', compact('product', 'categories', 'ages', 'product_sizes', 'galleries'));
     }
 

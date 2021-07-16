@@ -13,6 +13,7 @@ use App\Models\ProductGallery;
 use App\Models\ProductQuantity;
 use App\Models\ProductSize;
 use App\Models\Quantity;
+use App\Models\Size;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 
@@ -68,8 +69,11 @@ class ProductController extends Controller
         $categories = ProductCategory::all();
         $ages = Age::all();
         $galleries = ProductGallery::where('product_id', $product->id)->get();
-        $product_sizes = ProductSize::where('product_id', $product->id)->get();
-        return view('product.show', compact('product', 'categories', 'ages', 'product_sizes', 'galleries'));
+        $sizes = Size::whereHas('product_size', function ($q) use ($product) {
+            $q->where('product_id', $product->id)->latest();
+        })->get();
+        // dd($sizes);
+        return view('product.show', compact('product', 'categories', 'ages', 'galleries', 'sizes'));
     }
 
     /**

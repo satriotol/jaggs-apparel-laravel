@@ -75,16 +75,19 @@
                     <thead>
                         <tr>
                             <th>Size</th>
-                            <th>Unit</th>
                             <th>Qty</th>
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ($product_sizes as $product_size)
+                        @foreach ($sizes as $size)
                         <tr>
-                            <td>{{$product_size->product->name}}</td>
-                            <td>{{$product_size->size->name}}</td>
-                            <td>{{$product_size->qty}}</td>
+                            <td>{{$size->name}}</td>
+                            <td> @foreach ($size->product_size as $ps)
+                                @if ($ps->product_id == $product->id)
+                                {{$ps->qty}}
+                                @endif
+                                @endforeach
+                            </td>
                         </tr>
                         @endforeach
 

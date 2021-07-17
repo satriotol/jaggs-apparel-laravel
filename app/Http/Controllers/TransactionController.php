@@ -6,6 +6,7 @@ use App\Http\Requests\Transaction\CreateTransactionRequest;
 use App\Models\Transaction;
 use App\Models\TransactionDetail;
 use Illuminate\Http\Request;
+use Illuminate\Support\Arr;
 
 class TransactionController extends Controller
 {
@@ -57,7 +58,9 @@ class TransactionController extends Controller
     public function show(Transaction $transaction)
     {
         $transaction_details = TransactionDetail::where('transaction_id', $transaction->id)->get();
-        return view('transaction.show', compact('transaction', 'transaction_details'));
+        $price = array_sum(TransactionDetail::where('transaction_id', $transaction->id)->get()->pluck('product_price')->toArray());
+        // dd($price);
+        return view('transaction.show', compact('transaction', 'transaction_details', 'price'));
     }
 
     /**

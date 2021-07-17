@@ -6,6 +6,7 @@ use App\Http\Controllers\ProductCategoryController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProductSizeController;
 use App\Http\Controllers\SizeController;
+use App\Http\Controllers\TransactionController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -29,7 +30,8 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
         'product' => ProductController::class,
         'productcategory' => ProductCategoryController::class,
         'age' => AgeController::class,
-        'size' => SizeController::class
+        'size' => SizeController::class,
+        'transaction' => TransactionController::class
 
     ]);
     Route::resource('gallery', GalleryController::class)->except(['create', 'store']);

@@ -34,9 +34,6 @@ class ProductSizeController extends Controller
                 $product_size_delete->delete();
             }
         }
-        // if ($product_size_delete->count() > 0) {
-        //     $product_size_delete->delete();
-        // }
         ProductSize::create($data);
         session()->flash('success', 'Product Stock Updated Successfully');
         return redirect(route('product.show', $request->product_id));

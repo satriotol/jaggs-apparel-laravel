@@ -18,10 +18,10 @@ class CreateTransactionsTable extends Migration
             $table->string("uuid");
             $table->string("name");
             $table->string("email");
-            $table->integer("number");
+            $table->string("number");
             $table->string("address");
             $table->integer("transaction_total");
-            $table->integer("transaction_status");
+            $table->enum("transaction_status", ['PENDING', 'PAID', 'PACKING', 'ON DELIVERY', 'DONE', 'FAILED']);
             $table->timestamps();
         });
     }

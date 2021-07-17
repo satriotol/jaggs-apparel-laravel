@@ -15,25 +15,29 @@
             <table class="table card-table table-responsive table-responsive-large" style="width:100%">
                 <thead>
                     <tr>
+                        <th>UUID</th>
                         <th>Cust Name</th>
                         <th>Cust Email</th>
                         <th>Cust Number</th>
                         <th>Transaction Total</th>
                         <th>Transaction Status</th>
+                        <th>Action</th>
                     </tr>
                 </thead>
                 <tbody>
                     @foreach ($transactions as $transaction)
                     <tr>
+                        <td>{{$transaction->uuid}}</td>
                         <td>
-                            <a class="text-dark" href="{{route('transaction.show',$transaction->id)}}">
-                                {{$transaction->name}}</a>
+                            {{$transaction->name}}
                         </td>
                         <td>{{$transaction->email}}</td>
                         <td>{{$transaction->number}}</td>
                         <td>Rp {{number_format($transaction->transaction_total,2)}}</td>
                         <td>{{$transaction->transaction_status}}</td>
                         <td>
+                            <a href="{{route('transaction.show',$transaction->id)}}"
+                                class="badge badge-primary">Show</a>
                             <a href="{{route('transaction.edit',$transaction->id)}}"
                                 class="badge badge-warning">Edit</a>
                             <form action="{{route('transaction.destroy',$transaction->id)}}" class="d-inline"

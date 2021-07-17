@@ -7,6 +7,7 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProductSizeController;
 use App\Http\Controllers\SizeController;
 use App\Http\Controllers\TransactionController;
+use App\Http\Controllers\TransactionDetailController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -35,11 +36,11 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
 
     ]);
     Route::resource('gallery', GalleryController::class)->except(['create', 'store']);
-    // Route::get('quantity/create/{product}', [ProductController::class, 'quantity_create'])->name('quantity.create');
-    // Route::post('quantity/create/', [ProductController::class, 'quantity_store'])->name('quantity.store');
-    // Route::delete('quantity/delete/{quantity}', [ProductController::class, 'quantity_destroy'])->name('quantity.destroy');
     Route::get('gallery/create/{product}', [GalleryController::class, 'create'])->name('gallery.create');
     Route::post('gallery/create/', [GalleryController::class, 'store'])->name('gallery.store');
     Route::get('quantity/create/{product}', [ProductSizeController::class, 'create'])->name('quantity.create');
     Route::post('quantity/create/', [ProductSizeController::class, 'store'])->name('quantity.store');
+
+    Route::get('transaction/create/{transaction}', [TransactionDetailController::class, 'create'])->name('transactiondetail.create');
+    Route::post('transaction/store/{transaction}', [TransactionDetailController::class, 'store'])->name('transactiondetail.store');
 });

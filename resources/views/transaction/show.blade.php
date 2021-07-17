@@ -41,6 +41,14 @@
                         {{$transaction->address}}
                     </div>
                 </div>
+                <div class="row">
+                    <div class="col">
+                        <p>Total</p>
+                    </div>
+                    <div class="col">
+                        Rp. {{number_format($transaction->transaction_total,2)}}
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -66,10 +74,7 @@
                         <tr>
                             <td>{{$td->product_size->product->name}} / {{$td->product_size->size->name}}</td>
                             <td>{{$td->qty}}</td>
-                            @php
-                            $total = $td->qty*$td->product_size->product->price
-                            @endphp
-                            <td>Rp. {{number_format($total,2)}}</td>
+                            <td>Rp. {{number_format($td->product_price,2)}}</td>
                         </tr>
                         @endforeach
                     </tbody>

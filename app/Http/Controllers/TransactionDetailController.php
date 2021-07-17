@@ -21,6 +21,7 @@ class TransactionDetailController extends Controller
         $data['transaction_id'] = $transaction->id;
 
         TransactionDetail::create($data);
+
         session()->flash('success', 'Transaction Detail Created Successfully');
         return redirect(route('transaction.show', $transaction->id));
     }

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\Transaction\CreateTransactionRequest;
 use App\Models\Transaction;
+use App\Models\TransactionDetail;
 use Illuminate\Http\Request;
 
 class TransactionController extends Controller
@@ -55,7 +56,8 @@ class TransactionController extends Controller
      */
     public function show(Transaction $transaction)
     {
-        return view('transaction.show', compact('transaction'));
+        $transaction_details = TransactionDetail::where('transaction_id', $transaction->id)->get();
+        return view('transaction.show', compact('transaction', 'transaction_details'));
     }
 
     /**

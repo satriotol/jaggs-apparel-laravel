@@ -56,15 +56,22 @@
                 <table class="table card-table table-responsive table-responsive-large" style="width:100%">
                     <thead>
                         <tr>
-                            <th>Size</th>
+                            <th>Product</th>
                             <th>Qty</th>
+                            <th>Total</th>
                         </tr>
                     </thead>
                     <tbody>
+                        @foreach ($transaction_details as $td)
                         <tr>
-                            <td></td>
-                            <td></td>
+                            <td>{{$td->product_size->product->name}} / {{$td->product_size->size->name}}</td>
+                            <td>{{$td->qty}}</td>
+                            @php
+                            $total = $td->qty*$td->product_size->product->price
+                            @endphp
+                            <td>Rp. {{number_format($total,2)}}</td>
                         </tr>
+                        @endforeach
                     </tbody>
                 </table>
             </div>

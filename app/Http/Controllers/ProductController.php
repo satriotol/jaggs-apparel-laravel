@@ -4,17 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\ProductCreateRequest;
 use App\Http\Requests\ProductUpdateRequest;
-use App\Http\Requests\QuantityCreateRequest;
 use App\Models\Age;
-use App\Models\Category;
 use App\Models\Product;
 use App\Models\ProductCategory;
 use App\Models\ProductGallery;
-use App\Models\ProductQuantity;
-use App\Models\ProductSize;
-use App\Models\Quantity;
 use App\Models\Size;
-use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 
 

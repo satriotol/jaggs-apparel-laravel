@@ -27,7 +27,9 @@ class CreateTransactionRequest extends FormRequest
             'name' => 'required',
             'email' => 'required|email',
             'address' => 'required',
-            'number' => 'required'
+            'number' => 'required',
+            'transaction_details' => 'required|array',
+            'transaction_details.*' => 'integer|exists:products,id',
         ];
     }
 }

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\Transaction\CreateTransactionRequest;
+use App\Models\ProductSize;
 use App\Models\Transaction;
 use App\Models\TransactionDetail;
 use Illuminate\Http\Request;
@@ -28,7 +29,8 @@ class TransactionController extends Controller
      */
     public function create()
     {
-        return view('transaction.create');
+        $product_sizes = ProductSize::all();
+        return view('transaction.create', compact('product_sizes'));
     }
 
     /**
@@ -39,11 +41,21 @@ class TransactionController extends Controller
      */
     public function store(CreateTransactionRequest $request)
     {
-        $data = $request->all();
+        $data = $request->except('transaction_details');
         $data['uuid'] = 'JAGGS' . mt_rand(10000, 100000);
         $data['transaction_total'] = 0;
         $data['transaction_status'] = 'PENDING';
-        Transaction::create($data);
+        $transaction = Transaction::create($data);
+
+        foreach ($request->transaction_details as $product) {
+            $details[] = new TransactionDetail([
+                'transaction_id' => $transaction->id,
+                'product_size_id' => $product,
+                'qty' => 1,
+            ]);
+            ProductSize::find($product)->decrement('qty');
+        }
+        $transaction->details()->saveMany($details);
 
         session()->flash('success', 'Transaction Created Successfully');
         return redirect(route('transaction.index'));

@@ -39,6 +39,16 @@
                         value="{{isset($transaction) ? $transaction->number : ''}}" id=" exampleFormControlInput1"
                         placeholder="Enter Phone Number">
                 </div>
+                <div class="form-group">
+                    <label>Product</label>
+                    <select name="transaction_details[]" multiple id="" class="form-control">
+                        <option value="">Select Product</option>
+                        @foreach ($product_sizes as $product)
+                        <option value="{{$product->id}}">{{$product->product->name}}</option>
+
+                        @endforeach
+                    </select>
+                </div>
                 <div class="form-footer pt-4 pt-5 mt-4 border-top">
                     <button type="submit" class="btn btn-primary btn-default">Submit</button>
                     <a href="{{ URL::previous() }}" class="btn btn-secondary btn-default">Cancel</a>

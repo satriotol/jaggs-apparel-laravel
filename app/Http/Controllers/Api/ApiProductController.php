@@ -11,9 +11,9 @@ class ApiProductController extends Controller
     public function index(Request $request)
     {
         $slug = $request->input('slug');
-        $product = Product::with(['category', 'age', 'galleries', 'quantities'])->whereHas('galleries')->get();
+        $product = Product::with(['category', 'age', 'galleries'])->whereHas('galleries')->get();
         if ($slug) {
-            $product = Product::with(['category', 'age', 'galleries', 'quantities'])->whereHas('galleries')->where('slug', $slug)->first();
+            $product = Product::with(['category', 'age', 'galleries'])->whereHas('galleries')->where('slug', $slug)->first();
             if ($product) {
                 return ResponseFormatter::success($product, 'Data Product Berhasil Diambil');
             } else {
@@ -28,7 +28,7 @@ class ApiProductController extends Controller
     }
     public function detail($slug)
     {
-        $product = Product::with(['category', 'age', 'galleries', 'quantities'])->where('slug', $slug)->first();
+        $product = Product::with(['category', 'age', 'galleries'])->where('slug', $slug)->first();
         if ($product) {
             return ResponseFormatter::success($product, 'Data Product Berhasil Diambil');
         } else {

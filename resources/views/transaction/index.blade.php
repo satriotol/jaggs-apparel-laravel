@@ -5,9 +5,9 @@
     <div class="card card-table-border-none" id="recent-orders">
         <div class="card-header justify-content-between">
             <h2>Transaction</h2>
-            <a class="btn btn-primary" href="{{route("transaction.create")}}">
-                Create
-            </a>
+            {{-- <a class="btn btn-primary" href="{{route("transaction.create")}}">
+            Create
+            </a> --}}
         </div>
         @include('partials.success')
         @include('partials.error')
@@ -38,8 +38,8 @@
                         <td>
                             <a href="{{route('transaction.show',$transaction->id)}}"
                                 class="badge badge-primary">Show</a>
-                            <a href="{{route('transaction.edit',$transaction->id)}}"
-                                class="badge badge-warning">Edit</a>
+                            {{-- <a href="{{route('transaction.edit',$transaction->id)}}"
+                            class="badge badge-warning">Edit</a> --}}
                             <form action="{{route('transaction.destroy',$transaction->id)}}" class="d-inline"
                                 method="POST">
                                 @csrf

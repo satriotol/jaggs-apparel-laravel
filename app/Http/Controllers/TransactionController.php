@@ -104,8 +104,11 @@ class TransactionController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Transaction $transaction)
     {
-        //
+        $transaction->details()->delete();
+        $transaction->delete();
+        session()->flash('success', 'Transaction Deleted Successfully');
+        return redirect(route('transaction.index'));
     }
 }

@@ -107,6 +107,7 @@ class ProductController extends Controller
      */
     public function destroy(Product $product)
     {
+        $product->product_size()->delete();
         $product->delete();
         session()->flash('success', 'Kategori Deleted Successfully');
         return redirect(route("product.index"));

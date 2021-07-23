@@ -56,9 +56,9 @@
         <div class="card card-table-border-none">
             <div class="card-header card-header-border-bottom">
                 <h2>Product Quantity</h2>
-                <a class="ml-auto badge badge-primary" href="{{route('transactiondetail.create',$transaction->id)}}">
-                    Create
-                </a>
+                {{-- <a class="ml-auto badge badge-primary" href="{{route('transactiondetail.create',$transaction->id)}}">
+                Create
+                </a> --}}
             </div>
             <div class="card-body pt-0 pb-5">
                 <table class="table card-table table-responsive table-responsive-large" style="width:100%">

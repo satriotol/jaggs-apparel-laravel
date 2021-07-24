@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\ProductCreateRequest;
 use App\Http\Requests\ProductUpdateRequest;
-use App\Models\Age;
 use App\Models\Product;
 use App\Models\ProductCategory;
 use App\Models\ProductGallery;
@@ -33,8 +32,7 @@ class ProductController extends Controller
     public function create()
     {
         $categories = ProductCategory::all();
-        $ages = Age::all();
-        return view("product.create", compact('categories', 'ages'));
+        return view("product.create", compact('categories'));
     }
     /**
      * Store a newly created resource in storage.
@@ -61,13 +59,11 @@ class ProductController extends Controller
     public function show(Product $product)
     {
         $categories = ProductCategory::all();
-        $ages = Age::all();
         $galleries = ProductGallery::where('product_id', $product->id)->get();
         $sizes = Size::whereHas('product_size', function ($q) use ($product) {
             $q->where('product_id', $product->id)->latest();
         })->get();
-        // dd($sizes);
-        return view('product.show', compact('product', 'categories', 'ages', 'galleries', 'sizes'));
+        return view('product.show', compact('product', 'categories',  'galleries', 'sizes'));
     }
 
     /**
@@ -79,8 +75,7 @@ class ProductController extends Controller
     public function edit(Product $product)
     {
         $categories = ProductCategory::all();
-        $ages = Age::all();
-        return view('product.create', compact('product', 'categories', 'ages'));
+        return view('product.create', compact('product', 'categories'));
     }
     /**
      * Update the specified resource in storage.

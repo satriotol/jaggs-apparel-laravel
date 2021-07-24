@@ -46,19 +46,6 @@
                         @endforeach
                     </select>
                 </div>
-                <div class="form-group">
-                    <label for="exampleFormControlSelect12">Age</label>
-                    <select class="form-control" id="exampleFormControlSelect12" disabled name="age_id">
-                        <option value="">Select Age</option>
-                        @foreach ($ages as $age)
-                        <option value="{{$age->id}}" @if (isset($product)) @if ($age->id ===
-                            $product->age_id)
-                            selected @endif @endif>
-                            {{$age->name}}
-                        </option>
-                        @endforeach
-                    </select>
-                </div>
             </div>
         </div>
     </div>

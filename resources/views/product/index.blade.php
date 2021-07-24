@@ -18,7 +18,6 @@
                         <th>Product Name</th>
                         <th>Price</th>
                         <th>Category</th>
-                        <th>Age</th>
                         <th>Action</th>
                     </tr>
                 </thead>
@@ -30,7 +29,6 @@
                         </td>
                         <td>Rp {{number_format($product->price,2)}}</td>
                         <td>{{$product->category->name}}</td>
-                        <td>{{$product->age->name}}</td>
                         <td>
                             <a href="{{route('product.edit',$product->id)}}" class="badge badge-warning">Edit</a>
                             <form action="{{route('product.destroy',$product->id)}}" class="d-inline" method="POST">

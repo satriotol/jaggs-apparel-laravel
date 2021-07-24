@@ -19,7 +19,6 @@ class CreateProductsTable extends Migration
             $table->string('name');
             $table->longText('description');
             $table->unsignedBigInteger('category_id');
-            $table->unsignedBigInteger('age_id');
             $table->integer('weight');
 
             $table->softDeletes();

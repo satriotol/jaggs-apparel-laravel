@@ -28,7 +28,6 @@ class ProductUpdateRequest extends FormRequest
             'name' => 'required|unique:products,name,' . $this->product->id,
             'description' => 'required',
             'category_id' => 'required',
-            'age_id' => 'required'
         ];
     }
 }

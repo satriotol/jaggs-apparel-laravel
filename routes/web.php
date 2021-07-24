@@ -1,6 +1,5 @@
 <?php
 
-use App\Http\Controllers\AgeController;
 use App\Http\Controllers\GalleryController;
 use App\Http\Controllers\ProductCategoryController;
 use App\Http\Controllers\ProductController;
@@ -30,7 +29,6 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     Route::resources([
         'product' => ProductController::class,
         'productcategory' => ProductCategoryController::class,
-        'age' => AgeController::class,
         'size' => SizeController::class,
         'transaction' => TransactionController::class
 

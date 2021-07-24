@@ -47,19 +47,6 @@
                     @endforeach
                 </select>
             </div>
-            <div class="form-group">
-                <label for="exampleFormControlSelect12">Age</label>
-                <select class="form-control" id="exampleFormControlSelect12" name="age_id">
-                    <option value="">Select Age</option>
-                    @foreach ($ages as $age)
-                    <option value="{{$age->id}}" @if (isset($product)) @if ($age->id ===
-                        $product->age_id)
-                        selected @endif @endif>
-                        {{$age->name}}
-                    </option>
-                    @endforeach
-                </select>
-            </div>
             <div class="form-footer pt-4 pt-5 mt-4 border-top">
                 <button type="submit" class="btn btn-primary btn-default">Submit</button>
                 <a href="{{ URL::previous() }}" class="btn btn-secondary btn-default">Cancel</a>

@@ -29,7 +29,6 @@ class ProductCreateRequest extends FormRequest
             'weight' => 'required|numeric',
             'description' => 'required',
             'category_id' => 'required',
-            'age_id' => 'required',
         ];
     }
 }

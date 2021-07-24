@@ -46,11 +46,6 @@
                                     <span class="nav-text">Product Category</span>
                                 </a>
                             </li>
-                            <li class="{{Request::routeIs('age.*') ? 'active' : ''}}">
-                                <a class="sidenav-item-link" href="{{route("age.index")}}">
-                                    <span class="nav-text">Product Age</span>
-                                </a>
-                            </li>
                             <li class="{{Request::routeIs('size.*') ? 'active' : ''}}">
                                 <a class="sidenav-item-link" href="{{route("size.index")}}">
                                     <span class="nav-text">Product Size</span>

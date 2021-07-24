@@ -14,7 +14,11 @@ class ApiProductController extends Controller
         $slug = $request->input('slug');
         $product = Product::with(['category', 'galleries', 'product_size'])->whereHas('galleries')->whereHas('product_size', function ($q) {
             $q->where('qty', '>', 0);
-        })->get()->groupBy('category_name');
+        })->get()->groupBy('category_name')->map(function ($group) {
+            return $group->map(function ($value) {
+                return ["category_name" => $value->category_name, "data" => $value];
+            });
+        });
 
         if ($slug) {
             $product = Product::with(['category', 'galleries', 'product_size'])->whereHas('galleries')->whereHas('product_size')->where('slug', $slug)->first();

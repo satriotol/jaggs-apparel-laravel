@@ -14,11 +14,11 @@ class ProductCategorySeeder extends Seeder
      */
     public function run()
     {
-        ProductCategory::insert([
-            'name' => "PRIA",
-        ]);
-        ProductCategory::insert([
-            'name' => "WANITA",
-        ]);
+        $data = ['PANTS', 'T-SHIRT', 'SHIRT', 'JACKET'];
+        foreach ($data as $key => $value) {
+            ProductCategory::insert([
+                'name' => $value,
+            ]);
+        }
     }
 }

@@ -11,9 +11,11 @@ class ApiProductController extends Controller
     public function index(Request $request)
     {
         $slug = $request->input('slug');
-        $product = Product::with(['category', 'age', 'galleries', 'product_size'])->whereHas('galleries')->whereHas('product_size')->get();
+        $product = Product::with(['category', 'galleries', 'product_size'])->whereHas('galleries')->whereHas('product_size', function ($q) {
+            $q->where('qty', '>', 0);
+        })->get();
         if ($slug) {
-            $product = Product::with(['category', 'age', 'galleries', 'product_size'])->whereHas('galleries')->whereHas('product_size')->where('slug', $slug)->first();
+            $product = Product::with(['category', 'galleries', 'product_size'])->whereHas('galleries')->whereHas('product_size')->where('slug', $slug)->first();
             if ($product) {
                 return ResponseFormatter::success($product, 'Data Product Berhasil Diambil');
             } else {
@@ -26,13 +28,13 @@ class ApiProductController extends Controller
             return ResponseFormatter::error(null, 'Data produk tidak ada', 404);
         };
     }
-    public function detail($slug)
-    {
-        $product = Product::with(['category', 'age', 'galleries', 'product_size'])->where('slug', $slug)->first();
-        if ($product) {
-            return ResponseFormatter::success($product, 'Data Product Berhasil Diambil');
-        } else {
-            return ResponseFormatter::error(null, 'Data produk tidak ada', 404);
-        };
-    }
+    // public function detail($slug)
+    // {
+    //     $product = Product::with(['category', 'galleries', 'product_size'])->where('slug', $slug)->first();
+    //     if ($product) {
+    //         return ResponseFormatter::success($product, 'Data Product Berhasil Diambil');
+    //     } else {
+    //         return ResponseFormatter::error(null, 'Data produk tidak ada', 404);
+    //     };
+    // }
 }

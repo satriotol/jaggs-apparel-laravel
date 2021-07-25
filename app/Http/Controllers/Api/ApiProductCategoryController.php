@@ -10,7 +10,7 @@ class ApiProductCategoryController extends Controller
 {
     public function index()
     {
-        $product_category = ProductCategory::all();
+        $product_category = ProductCategory::whereHas('products')->get();
         if ($product_category) {
             return ResponseFormatter::success($product_category, 'Data Product Category Berhasil Diambil');
         } else {

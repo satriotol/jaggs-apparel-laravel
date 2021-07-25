@@ -72,6 +72,13 @@
                         </ul>
                     </a>
                 </li>
+                <li class="{{Request::routeIs('about') ? 'active expand' : ''}}">
+                    <a class=" sidenav-item-link" href="{{route('about.edit',1)}}" aria-expanded="false"
+                        aria-controls="about">
+                        <i class="mdi mdi-view-about-outline"></i>
+                        <span class="nav-text">About</span>
+                    </a>
+                </li>
             </ul>
         </div>
     </div>

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Api\ApiProductCategoryController;
 use App\Http\Controllers\Api\ApiProductController;
 use App\Http\Controllers\Api\CheckOutController;
 use Illuminate\Http\Request;
@@ -21,4 +22,5 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 Route::get('products', [ApiProductController::class, 'index']);
 Route::get('products/{slug}', [ApiProductController::class, 'detail']);
+Route::get('productcategories', [ApiProductCategoryController::class, 'index']);
 Route::post('checkout', [CheckOutController::class, 'checkout']);

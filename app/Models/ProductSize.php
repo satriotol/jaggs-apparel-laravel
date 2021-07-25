@@ -10,6 +10,7 @@ class ProductSize extends Model
     use HasFactory;
     protected $table = 'product_sizes';
     protected $fillable = ['product_id', 'size_id', 'qty', 'status'];
+    protected $appends = ['size_name'];
 
     public function product()
     {
@@ -18,5 +19,9 @@ class ProductSize extends Model
     public function size()
     {
         return $this->belongsTo(Size::class, 'size_id', 'id');
+    }
+    public function getSizeNameAttribute()
+    {
+        return $this->size->name;
     }
 }

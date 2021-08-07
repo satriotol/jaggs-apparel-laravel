@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
-use App\Http\Resources\RajaOngkirResource;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Http\Request;
 
@@ -14,9 +13,11 @@ class RajaOngkirController extends Controller
         $response = Http::withHeaders(['key' => '26494ebb2065e1306db10cf998995b5f'])->get('https://api.rajaongkir.com/starter/province');
         return $response->json();
     }
-    public function cities()
+    public function cities(Request $request)
     {
-        $response = Http::withHeaders(['key' => '26494ebb2065e1306db10cf998995b5f'])->get('https://api.rajaongkir.com/starter/city');
+        $response = Http::withHeaders(['key' => '26494ebb2065e1306db10cf998995b5f'])->get('https://api.rajaongkir.com/starter/city', [
+            'province' => $request->input('province')
+        ]);
         return $response->json();
     }
     public function cost()

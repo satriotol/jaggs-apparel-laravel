@@ -20,13 +20,13 @@ class RajaOngkirController extends Controller
         ]);
         return $response->json();
     }
-    public function cost()
+    public function cost(Request $request)
     {
         $response = Http::withHeaders(['key' => '26494ebb2065e1306db10cf998995b5f'])->post('https://api.rajaongkir.com/starter/cost', [
-            "origin" => "501",
-            "destination" => "114",
+            "origin" => "399",
+            "destination" => $request->input('destination'),
             "weight" => '1700',
-            "courier" => "jne"
+            "courier" => $request->input('courier')
         ]);
         return $response->json();
     }

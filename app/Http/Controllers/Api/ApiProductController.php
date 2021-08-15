@@ -25,34 +25,6 @@ class ApiProductController extends Controller
         }
 
         return new ProductCollection($products);
-
-        // $category = $request->input('category_id');
-        // $product = Product::with(['category', 'galleries', 'product_size'])->whereHas('galleries')->whereHas('product_size', function ($q) {
-        //     $q->where('qty', '>', 0);
-        // })->get()->groupBy('category_name')->map(function ($group) {
-        //     return $group->map(function ($value) {
-        //         return ["category_name" => $value->category_name, "data" => $value];
-        //     });
-        // });
-        // if ($category) {
-        //     $product = Product::with(['category', 'galleries', 'product_size'])->whereHas('galleries')->whereHas('product_size', function ($q) {
-        //         $q->where('qty', '>', 0);
-        //     })->where('category_id', $category)->get()->groupBy('category_name')->map(function ($group) {
-        //         return $group->map(function ($value) {
-        //             return ["category_name" => $value->category_name, "data" => $value];
-        //         });
-        //     });
-        //     if ($product) {
-        //         return ResponseFormatter::success($product, 'Data Product Berhasil Diambil');
-        //     } else {
-        //         return ResponseFormatter::error(null, 'Data produk tidak ada', 404);
-        //     };
-        // }
-        // if ($product) {
-        //     return ResponseFormatter::success($product, 'Data Product Berhasil Diambil');
-        // } else {
-        //     return ResponseFormatter::error(null, 'Data produk tidak ada', 404);
-        // };
     }
     public function detail($slug)
     {

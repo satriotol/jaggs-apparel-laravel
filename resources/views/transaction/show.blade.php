@@ -46,7 +46,7 @@
                         <p>Total</p>
                     </div>
                     <div class="col">
-                        Rp. {{number_format($price,2)}}
+                        Rp. {{number_format($transaction->transaction_total,2)}}
                     </div>
                 </div>
             </div>

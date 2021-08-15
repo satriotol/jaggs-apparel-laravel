@@ -75,10 +75,9 @@ class TransactionController extends Controller
     public function show(Transaction $transaction, Request $request)
     {
         $transaction_details = TransactionDetail::where('transaction_id', $transaction->id)->get();
-        $price = array_sum(TransactionDetail::where('transaction_id', $transaction->id)->get()->pluck('product_price')->toArray());
         $status = ['PENDING', 'PAID', 'CANCELED'];
         // dd($price);
-        return view('transaction.show', compact('transaction', 'transaction_details', 'price', 'status'));
+        return view('transaction.show', compact('transaction', 'transaction_details', 'status'));
     }
 
     /**

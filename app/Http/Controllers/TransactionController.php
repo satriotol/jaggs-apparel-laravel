@@ -48,15 +48,7 @@ class TransactionController extends Controller
         $data['transaction_total'] = 0;
         $data['transaction_status'] = 'PENDING';
 
-        $number = $request->number;
-        $country_code = '62';
-        $isZero = substr($number, 0, 1);
-        if ($isZero == '0') {
-            $new_number = substr_replace($number, '+' . $country_code, 0, ($number[0] == '0'));
-            $data['number'] = $new_number;
-        } else {
-            $data['number'] = $number;
-        }
+
 
         $transaction = Transaction::create($data);
 

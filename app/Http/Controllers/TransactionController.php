@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\Transaction\CreateTransactionRequest;
+use App\Http\Requests\UpdateTransactionStatus;
 use App\Models\ProductSize;
 use App\Models\Transaction;
 use App\Models\TransactionDetail;
@@ -41,10 +42,22 @@ class TransactionController extends Controller
      */
     public function store(CreateTransactionRequest $request)
     {
+
         $data = $request->except('transaction_details');
         $data['uuid'] = 'JAGGS' . mt_rand(10000, 100000);
         $data['transaction_total'] = 0;
         $data['transaction_status'] = 'PENDING';
+
+        $number = $request->number;
+        $country_code = '62';
+        $isZero = substr($number, 0, 1);
+        if ($isZero == '0') {
+            $new_number = substr_replace($number, '+' . $country_code, 0, ($number[0] == '0'));
+            $data['number'] = $new_number;
+        } else {
+            $data['number'] = $number;
+        }
+
         $transaction = Transaction::create($data);
 
         foreach ($request->transaction_details as $product) {
@@ -67,12 +80,13 @@ class TransactionController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Transaction $transaction)
+    public function show(Transaction $transaction, Request $request)
     {
         $transaction_details = TransactionDetail::where('transaction_id', $transaction->id)->get();
         $price = array_sum(TransactionDetail::where('transaction_id', $transaction->id)->get()->pluck('product_price')->toArray());
+        $status = ['PENDING', 'PAID', 'CANCELED'];
         // dd($price);
-        return view('transaction.show', compact('transaction', 'transaction_details', 'price'));
+        return view('transaction.show', compact('transaction', 'transaction_details', 'price', 'status'));
     }
 
     /**
@@ -93,9 +107,12 @@ class TransactionController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UpdateTransactionStatus $request, Transaction $transaction)
     {
-        //
+        $data = $request->all();
+        $transaction->update($data);
+        session()->flash('success', 'Transaction Updated Successfully');
+        return redirect()->back();
     }
 
     /**

@@ -82,5 +82,33 @@
             </div>
         </div>
     </div>
+    <div class="col-md-12">
+        <div class="card card-default">
+            <div class="card-header card-header-border-bottom">
+                <h2>Update Status {{$transaction->uuid}}</h2>
+            </div>
+            <div class="card-body">
+                <form action="{{route('transaction.update', $transaction->id)}}" method="POST">
+                    @method('PUT')
+                    @csrf
+                    <div class="form-group">
+                        <label>Status</label>
+                        <select name="transaction_status" id="" class="form-control">
+                            <option value="">Select Status</option>
+                            @foreach ($status as $s)
+                            <option value="{{$s}}" @isset($transaction) @if ($s==$transaction->transaction_status)
+                                selected
+                                @endif
+                                @endisset>{{$s}}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                    <div class="text-right">
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
 </div>
 @endsection

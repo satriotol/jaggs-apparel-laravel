@@ -21,6 +21,10 @@ class CreateTransactionsTable extends Migration
             $table->string("number");
             $table->string("address");
             $table->integer("transaction_total");
+            $table->integer("province");
+            $table->integer("city");
+            $table->string("courier");
+            $table->integer("courier_price");
             $table->enum("transaction_status", ['PENDING', 'PAID', 'PACKING', 'ON DELIVERY', 'DONE', 'FAILED']);
             $table->timestamps();
         });

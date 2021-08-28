@@ -49,6 +49,14 @@
                         Rp. {{number_format($transaction->transaction_total,2)}}
                     </div>
                 </div>
+                <div class="row">
+                    <div class="col">
+                        <p>Kurir</p>
+                    </div>
+                    <div class="col">
+                        {{}}
+                    </div>
+                </div>
             </div>
         </div>
     </div>

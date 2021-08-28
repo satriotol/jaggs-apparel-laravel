@@ -31,6 +31,10 @@ class CheckoutRequest extends FormRequest
             'transaction_total' => 'required|integer',
             'transaction_details' => 'required|array',
             'transaction_details.*' => 'integer|exists:product_sizes,id',
+            'province' => 'required',
+            'city' => 'required',
+            'courier' => 'required',
+            'courier_price' => 'required'
         ];
     }
 }

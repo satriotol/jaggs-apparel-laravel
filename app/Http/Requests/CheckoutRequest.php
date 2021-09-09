@@ -24,17 +24,17 @@ class CheckoutRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required',
-            'email' => 'required|email',
-            'address' => 'required',
-            'number' => 'required',
+            'name'              => 'required',
+            'email'             => 'required|email',
+            'address'           => 'required',
+            'number'            => 'required',
             'transaction_total' => 'required|integer',
-            'transaction_details' => 'required|array',
+            'transaction_details'   => 'required|array',
             'transaction_details.*' => 'integer|exists:product_sizes,id',
-            'province' => 'required',
-            'city' => 'required',
-            'courier' => 'required',
-            'courier_price' => 'required'
+            'province'              => 'required',
+            'city'                  => 'required',
+            'courier'               => 'required',
+            'courier_price'         => 'required'
         ];
     }
 }

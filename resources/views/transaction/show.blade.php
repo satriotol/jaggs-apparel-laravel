@@ -54,7 +54,7 @@
                         <p>Kurir</p>
                     </div>
                     <div class="col">
-                        {{}}
+                        {{$transaction->courier}}
                     </div>
                 </div>
             </div>

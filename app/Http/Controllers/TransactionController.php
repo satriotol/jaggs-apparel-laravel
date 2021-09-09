@@ -9,6 +9,8 @@ use App\Models\Transaction;
 use App\Models\TransactionDetail;
 use Illuminate\Http\Request;
 use Illuminate\Support\Arr;
+use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\URL;
 
 class TransactionController extends Controller
 {
@@ -76,7 +78,6 @@ class TransactionController extends Controller
     {
         $transaction_details = TransactionDetail::where('transaction_id', $transaction->id)->get();
         $status = ['PENDING', 'PAID', 'CANCELED'];
-        // dd($price);
         return view('transaction.show', compact('transaction', 'transaction_details', 'status'));
     }
 

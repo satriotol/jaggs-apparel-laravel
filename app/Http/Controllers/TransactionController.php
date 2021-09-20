@@ -77,8 +77,10 @@ class TransactionController extends Controller
     public function show(Transaction $transaction, Request $request)
     {
         $transaction_details = TransactionDetail::where('transaction_id', $transaction->id)->get();
+        $province_name = Http::withHeaders(['key' => '26494ebb2065e1306db10cf998995b5f'])->get('https://api.rajaongkir.com/starter/province?id=' . $transaction->province)->json('rajaongkir.results.province');
+        $city_name = Http::withHeaders(['key' => '26494ebb2065e1306db10cf998995b5f'])->get('https://api.rajaongkir.com/starter/city?id=' . $transaction->city)->json('rajaongkir.results.city_name');
         $status = ['PENDING', 'PAID', 'CANCELED'];
-        return view('transaction.show', compact('transaction', 'transaction_details', 'status'));
+        return view('transaction.show', compact('transaction', 'transaction_details', 'status', 'province_name', 'city_name'));
     }
 
     /**

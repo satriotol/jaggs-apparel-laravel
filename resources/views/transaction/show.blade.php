@@ -43,6 +43,22 @@
                 </div>
                 <div class="row">
                     <div class="col">
+                        <p>Province</p>
+                    </div>
+                    <div class="col">
+                        {{$province_name}}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <p>City</p>
+                    </div>
+                    <div class="col">
+                        {{$city_name}}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
                         <p>Total</p>
                     </div>
                     <div class="col">
@@ -54,7 +70,7 @@
                         <p>Kurir</p>
                     </div>
                     <div class="col">
-                        {{$transaction->courier}}
+                        {{$transaction->courier}} / Rp. {{number_format($transaction->courier_price,2)}}
                     </div>
                 </div>
             </div>
@@ -64,9 +80,6 @@
         <div class="card card-table-border-none">
             <div class="card-header card-header-border-bottom">
                 <h2>Product Quantity</h2>
-                {{-- <a class="ml-auto badge badge-primary" href="{{route('transactiondetail.create',$transaction->id)}}">
-                Create
-                </a> --}}
             </div>
             <div class="card-body pt-0 pb-5">
                 <table class="table card-table table-responsive table-responsive-large" style="width:100%">

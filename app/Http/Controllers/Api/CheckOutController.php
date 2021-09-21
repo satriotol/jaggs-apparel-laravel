@@ -38,7 +38,31 @@ class CheckOutController extends Controller
         }
 
         $transaction->details()->saveMany($details);
+        // Set your Merchant Server Key
+        \Midtrans\Config::$serverKey = 'SB-Mid-server-9xwN7E-3Z97u382iMqioXTK3';
+        // Set to Development/Sandbox Environment (default). Set to true for Production Environment (accept real transaction).
+        \Midtrans\Config::$isProduction = false;
+        // Set sanitization on (default)
+        \Midtrans\Config::$isSanitized = true;
+        // Set 3DS transaction for credit card to true
+        \Midtrans\Config::$is3ds = true;
 
+        $params = array(
+            'transaction_details' => array(
+                'order_id' => $transaction->uuid,
+                'gross_amount' => $transaction->transaction_total,
+            ),
+            'customer_details' => array(
+                'first_name' => $transaction->name,
+                'email' => $transaction->email,
+                'phone' => $transaction->phone,
+            ),
+        );
+
+        $snapToken = \Midtrans\Snap::getSnapToken($params);
+        $transaction->update([
+            'snaptoken' => $snapToken
+        ]);
         return ResponseFormatter::success($transaction);
     }
 }

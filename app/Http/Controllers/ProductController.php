@@ -10,7 +10,6 @@ use App\Models\ProductGallery;
 use App\Models\Size;
 use Illuminate\Support\Str;
 
-
 class ProductController extends Controller
 {
     /**
@@ -18,8 +17,10 @@ class ProductController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
     public function index()
     {
+
         $products = Product::all();
         return view("product.index", compact('products'));
     }

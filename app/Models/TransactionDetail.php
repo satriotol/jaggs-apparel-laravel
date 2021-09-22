@@ -18,7 +18,7 @@ class TransactionDetail extends Model
     }
     public function getProductPriceAttribute()
     {
-        $product_price = $this->product_size->product?->price;
+        $product_price = $this->product_size->product->price;
         $product_qty = $this->qty;
         $total = $product_price * $product_qty;
         return $total;

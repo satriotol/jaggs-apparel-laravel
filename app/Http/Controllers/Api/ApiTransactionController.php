@@ -20,7 +20,7 @@ class ApiTransactionController extends Controller
     }
     public function show($uuid)
     {
-        $transactions = Transaction::firstWhere('uuid', $uuid);
+        $transactions = Transaction::where('uuid', $uuid)->get();
         if ($transactions) {
             return new TransactionCollection($transactions);
         } else {

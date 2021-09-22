@@ -17,7 +17,9 @@ class TransactionDetailResource extends JsonResource
         return [
             'id' => $this->id,
             'product_name' => $this->product_size->product->name,
-            'qty' => $this->qty
+            'product_size' => $this->product_size->size->name,
+            'qty' => $this->qty,
+            'price' => $this->product_price,
         ];
     }
 }

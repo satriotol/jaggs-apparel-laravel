@@ -3,6 +3,7 @@
 use App\Http\Controllers\Api\ApiAboutController;
 use App\Http\Controllers\Api\ApiProductCategoryController;
 use App\Http\Controllers\Api\ApiProductController;
+use App\Http\Controllers\Api\ApiTransactionController;
 use App\Http\Controllers\Api\CheckOutController;
 use App\Http\Controllers\Api\RajaOngkirController;
 use Illuminate\Http\Request;
@@ -30,3 +31,5 @@ Route::get('about', [ApiAboutController::class, 'index']);
 Route::get('products/{slug}', [ApiProductController::class, 'detail']);
 Route::get('productcategories', [ApiProductCategoryController::class, 'index']);
 Route::post('checkout', [CheckOutController::class, 'checkout']);
+Route::get('transactions', [ApiTransactionController::class, 'index']);
+Route::get('transactions/{uuid}', [ApiTransactionController::class, 'show']);

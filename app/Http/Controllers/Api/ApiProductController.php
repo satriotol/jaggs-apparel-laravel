@@ -12,19 +12,17 @@ class ApiProductController extends Controller
 {
     public function index(Request $request)
     {
-        $category = $request->input('category_id');
-
         $products = Product::whereHas('galleries')->whereHas('product_size', function ($q) {
             $q->where('qty', '>', '0');
+        })->when($request->category_id, function ($q) use ($request) {
+            $q->where('category_id', $request->category_id);
         })->orderBy('id', 'desc')->get();
-        if ($category) {
-            $products = Product::whereHas('galleries')->whereHas('product_size', function ($q) {
-                $q->where('qty', '>', '0');
-            })->where('category_id', $category)->orderBy('id', 'desc')->get();
-            return new ProductCollection($products);
-        }
+        if ($products) {
+            return ResponseFormatter::success(new ProductCollection($products), 'Data Product Berhasil Diambil');
+        } else {
+            return ResponseFormatter::error(null, 'Data produk tidak ada', 404);
+        };
 
-        return new ProductCollection($products);
     }
     public function detail($slug)
     {

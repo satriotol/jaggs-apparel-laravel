@@ -24,6 +24,12 @@
                         placeholder="Enter Product Price">
                 </div>
                 <div class="form-group">
+                    <label for="exampleFormControlInput1">New Price</label>
+                    <input type="number" disabled class="form-control" name="new_price"
+                        value="{{isset($product) ? $product->new_price : ''}}" id=" exampleFormControlInput1"
+                        placeholder="Enter Product Price">
+                </div>
+                <div class="form-group">
                     <label for="exampleFormControlTextarea1">Description</label>
                     <textarea class="form-control" disabled name="description" id="exampleFormControlTextarea1"
                         rows="3">{{isset($product) ? $product->description : ''}}</textarea>
@@ -32,6 +38,15 @@
                     <label for="exampleFormControlTextarea1">Weight</label>
                     <input type="number" class="form-control" name="weight" disabled
                         value="{{isset($product) ? $product->weight : ''}}">
+                </div>
+                <div class="form-group">
+                    <label>Is Sale ?</label>
+                    <select name="is_sale" class="form-control" required disabled>
+                        <option value="0" @if (isset($product)) @if (0===$product->is_sale)
+                            selected @endif @endif>No</option>
+                        <option value="1" @if (isset($product)) @if (1===$product->is_sale)
+                            selected @endif @endif>Yes</option>
+                    </select>
                 </div>
                 <div class="form-group">
                     <label for="exampleFormControlSelect12">Category</label>
@@ -53,7 +68,7 @@
         <div class="card card-table-border-none" id="recent-orders">
             <div class="card-header justify-content-between">
                 <h2>Product Quantity</h2>
-                <a class="btn btn-primary" href="{{route("quantity.create",$product->id)}}">
+                <a class="btn btn-primary" href="{{route('quantity.create',$product->id)}}">
                     Create
                 </a>
             </div>
@@ -85,7 +100,7 @@
         <div class="card card-table-border-none" id="recent-orders">
             <div class="card-header justify-content-between">
                 <h2>Product Gallery</h2>
-                <a class="btn btn-primary" href="{{route("gallery.create",$product->id)}}">
+                <a class="btn btn-primary" href="{{route('gallery.create',$product->id)}}">
                     Create
                 </a>
             </div>

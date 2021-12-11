@@ -36,18 +36,18 @@
                         id="product" data-parent="#sidebar-menu">
                         <div class="sub-menu">
                             <li class="{{Request::routeIs('product.*','quantity.*','gallery.*') ? 'active' : ''}}">
-                                <a class="sidenav-item-link" href="{{route("product.index")}}">
+                                <a class="sidenav-item-link" href="{{route('product.index')}}">
                                     <span class="nav-text">All Product</span>
 
                                 </a>
                             </li>
                             <li class="{{Request::routeIs('productcategory.*') ? 'active' : ''}}">
-                                <a class="sidenav-item-link" href="{{route("productcategory.index")}}">
+                                <a class="sidenav-item-link" href="{{route('productcategory.index')}}">
                                     <span class="nav-text">Product Category</span>
                                 </a>
                             </li>
                             <li class="{{Request::routeIs('size.*') ? 'active' : ''}}">
-                                <a class="sidenav-item-link" href="{{route("size.index")}}">
+                                <a class="sidenav-item-link" href="{{route('size.index')}}">
                                     <span class="nav-text">Product Size</span>
                                 </a>
                             </li>
@@ -63,7 +63,7 @@
                             id="transaction" data-parent="#sidebar-menu">
                             <div class="sub-menu">
                                 <li class="{{Request::routeIs('transaction.*') ? 'active' : ''}}">
-                                    <a class="sidenav-item-link" href="{{route("transaction.index")}}">
+                                    <a class="sidenav-item-link" href="{{route('transaction.index')}}">
                                         <span class="nav-text">All Transaction</span>
 
                                     </a>
@@ -77,6 +77,13 @@
                         aria-controls="about">
                         <i class="mdi mdi-view-about-outline"></i>
                         <span class="nav-text">About</span>
+                    </a>
+                </li>
+                <li class="{{Request::routeIs('sale') ? 'active expand' : ''}}">
+                    <a class=" sidenav-item-link" href="{{route('sale.edit',1)}}" aria-expanded="false"
+                        aria-controls="sale">
+                        <i class="mdi mdi-view-about-outline"></i>
+                        <span class="nav-text">Sale</span>
                     </a>
                 </li>
             </ul>

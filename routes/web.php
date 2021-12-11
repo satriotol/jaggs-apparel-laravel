@@ -5,6 +5,7 @@ use App\Http\Controllers\GalleryController;
 use App\Http\Controllers\ProductCategoryController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProductSizeController;
+use App\Http\Controllers\SaleController;
 use App\Http\Controllers\SizeController;
 use App\Http\Controllers\TransactionController;
 use App\Http\Controllers\TransactionDetailController;
@@ -32,7 +33,8 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
         'productcategory' => ProductCategoryController::class,
         'size' => SizeController::class,
         'transaction' => TransactionController::class,
-        'about' => AboutController::class
+        'about' => AboutController::class,
+        'sale' => SaleController::class,
     ]);
     Route::resource('gallery', GalleryController::class)->except(['create', 'store']);
     Route::get('gallery/create/{product}', [GalleryController::class, 'create'])->name('gallery.create');

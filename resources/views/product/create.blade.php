@@ -15,28 +15,23 @@
             @endif
             <div class="form-group">
                 <label for="exampleFormControlInput1">Product Name</label>
-                <input type="text" class="form-control" name="name" value="{{isset($product) ? $product->name : ''}}"
-                    id="exampleFormControlInput1" placeholder="Enter Product Name">
-            </div>
-            <div class="form-group">
-                <label for="exampleFormControlInput1">Price</label>
-                <input type="number" class="form-control" name="price"
-                    value="{{isset($product) ? $product->price : ''}}" id=" exampleFormControlInput1"
-                    placeholder="Enter Product Price">
+                <input type="text" class="form-control" name="name" required
+                    value="{{isset($product) ? $product->name : ''}}" id="exampleFormControlInput1"
+                    placeholder="Enter Product Name">
             </div>
             <div class="form-group">
                 <label for="exampleFormControlTextarea1">Description</label>
-                <textarea class="form-control" name="description" id="exampleFormControlTextarea1"
+                <textarea class="form-control" required name="description" id="exampleFormControlTextarea1"
                     rows="3">{{isset($product) ? $product->description : ''}}</textarea>
             </div>
             <div class="form-group">
                 <label for="exampleFormControlTextarea1">Weight</label>
-                <input type="number" class="form-control" name="weight"
+                <input type="number" required class="form-control" name="weight"
                     value="{{isset($product) ? $product->weight : ''}}">
             </div>
             <div class="form-group">
                 <label for="exampleFormControlSelect12">Category</label>
-                <select class="form-control" id="exampleFormControlSelect12" name="category_id">
+                <select class="form-control" id="exampleFormControlSelect12" required name="category_id">
                     <option>Select Category</option>
                     @foreach ($categories as $category)
                     <option value="{{$category->id}}" @if (isset($product)) @if ($category->id ===
@@ -46,6 +41,27 @@
                     </option>
                     @endforeach
                 </select>
+            </div>
+            <div class="form-group">
+                <label>Is Sale ?</label>
+                <select name="is_sale" class="form-control" required>
+                    <option value="0" @if (isset($product)) @if (0===$product->is_sale)
+                        selected @endif @endif>No</option>
+                    <option value="1" @if (isset($product)) @if (1===$product->is_sale)
+                        selected @endif @endif>Yes</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="exampleFormControlInput1">Price</label>
+                <input type="number" class="form-control" required name="price"
+                    value="{{isset($product) ? $product->price : ''}}" id=" exampleFormControlInput1"
+                    placeholder="Enter Product Price">
+            </div>
+            <div class="form-group">
+                <label>New Price</label>
+                <input type="number" class="form-control" required name="new_price"
+                    value="{{isset($product) ? $product->new_price : ''}}" id=" exampleFormControlInput1"
+                    placeholder="Enter Product Price">
             </div>
             <div class="form-footer pt-4 pt-5 mt-4 border-top">
                 <button type="submit" class="btn btn-primary btn-default">Submit</button>

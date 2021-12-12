@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AboutController;
+use App\Http\Controllers\ContactController;
 use App\Http\Controllers\GalleryController;
 use App\Http\Controllers\ProductCategoryController;
 use App\Http\Controllers\ProductController;
@@ -35,6 +36,7 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
         'transaction' => TransactionController::class,
         'about' => AboutController::class,
         'sale' => SaleController::class,
+        'contact' => ContactController::class
     ]);
     Route::resource('gallery', GalleryController::class)->except(['create', 'store']);
     Route::get('gallery/create/{product}', [GalleryController::class, 'create'])->name('gallery.create');

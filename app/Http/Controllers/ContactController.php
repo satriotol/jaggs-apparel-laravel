@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\About\AboutRequest;
-use App\Models\About;
+use App\Http\Requests\CreateContactRequest;
+use App\Models\Contact;
 use Illuminate\Http\Request;
 
-class AboutController extends Controller
+class ContactController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,6 +15,8 @@ class AboutController extends Controller
      */
     public function index()
     {
+        $contacts = Contact::all();
+        return view('contact.index', compact('contacts'));
     }
 
     /**
@@ -24,6 +26,7 @@ class AboutController extends Controller
      */
     public function create()
     {
+        return view('contact.create');
     }
 
     /**
@@ -32,9 +35,12 @@ class AboutController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CreateContactRequest $request)
     {
-        //
+        $data = $request->all();
+        Contact::create($data);
+        session()->flash('success', 'Contact Created Successfully');
+        return redirect(route('contact.index'));
     }
 
     /**
@@ -54,9 +60,9 @@ class AboutController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(About $about)
+    public function edit(Contact $contact)
     {
-        return view('about.create', compact('about'));
+        return view('contact.create', compact('contact'));
     }
 
     /**
@@ -66,17 +72,12 @@ class AboutController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(AboutRequest $request, About $about)
+    public function update(CreateContactRequest $request, Contact $contact)
     {
         $data = $request->all();
-        if ($request->hasFile('image')) {
-            $image = $request->image->store('gallery', 'public');
-            $about->deleteImage();
-            $data['image'] = $image;
-        };
-        $about->update($data);
-        session()->flash('success', 'About Updated Successfully');
-        return redirect(route("about.edit", 1));
+        $contact->update($data);
+        session()->flash('success', 'Contact Updated Successfully');
+        return redirect(route('contact.index'));
     }
 
     /**
@@ -85,8 +86,10 @@ class AboutController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Contact $contact)
     {
-        //
+        $contact->delete();
+        session()->flash('success', 'Contact Deleted Successfully');
+        return redirect(route("contact.index"));
     }
 }

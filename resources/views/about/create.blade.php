@@ -9,7 +9,7 @@
     @include('partials.error')
     <div class="card-body">
         <form action="@isset($about) {{route('about.update', $about->id)}} @endisset @empty($about) {{route('about.store')}}
-            @endempty" method="POST">
+            @endempty" method="POST" enctype="multipart/form-data">
             @csrf
             @if (isset($about))
             @method('PUT')
@@ -19,6 +19,11 @@
                 <textarea name="description"
                     class="form-control">{{isset($about) ? $about->description : ''}}</textarea>
             </div>
+            <div class="form-group">
+                <label for="exampleFormControlInput1">Image</label>
+                <input type="file" class="form-control" name="image">
+            </div>
+            <img src="{{$about->image}}" class="img-fluid" alt="">
             <div class="form-footer pt-4 pt-5 mt-4 text-right">
                 <button type="submit" class="btn btn-primary btn-default">Submit</button>
                 <a href="{{ URL::previous() }}" class="btn btn-secondary btn-default">Cancel</a>

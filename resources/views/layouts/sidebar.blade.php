@@ -79,6 +79,13 @@
                         <span class="nav-text">About</span>
                     </a>
                 </li>
+                <li class="{{Request::routeIs('contact') ? 'active expand' : ''}}">
+                    <a class=" sidenav-item-link" href="{{route('contact.index')}}" aria-expanded="false"
+                        aria-controls="contact">
+                        <i class="mdi mdi-view-about-outline"></i>
+                        <span class="nav-text">Contact</span>
+                    </a>
+                </li>
                 <li class="{{Request::routeIs('sale') ? 'active expand' : ''}}">
                     <a class=" sidenav-item-link" href="{{route('sale.edit',1)}}" aria-expanded="false"
                         aria-controls="sale">

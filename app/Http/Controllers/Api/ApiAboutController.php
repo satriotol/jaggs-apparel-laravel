@@ -12,7 +12,7 @@ class ApiAboutController extends Controller
 {
     public function index()
     {
-        $about = About::where('id', 1)->first();
+        $about = About::first();
         return new AboutResource($about);
     }
 }

@@ -21,7 +21,7 @@
             </div>
             <div class="form-group">
                 <label for="exampleFormControlInput1">Banner</label>
-                <input type="file" class="form-control" name="banner" required>
+                <input type="file" class="form-control" name="banner">
             </div>
             <img src="{{$sale->banner}}" class="img-fluid" alt="">
             <div class="form-footer pt-4 pt-5 mt-4 text-right">

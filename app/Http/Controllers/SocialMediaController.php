@@ -2,11 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\About\AboutRequest;
-use App\Models\About;
 use Illuminate\Http\Request;
 
-class AboutController extends Controller
+class SocialMediaController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,6 +13,7 @@ class AboutController extends Controller
      */
     public function index()
     {
+        
     }
 
     /**
@@ -24,6 +23,7 @@ class AboutController extends Controller
      */
     public function create()
     {
+        //
     }
 
     /**
@@ -54,9 +54,9 @@ class AboutController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(About $about)
+    public function edit($id)
     {
-        return view('about.create', compact('about'));
+        //
     }
 
     /**
@@ -66,17 +66,9 @@ class AboutController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(AboutRequest $request, About $about)
+    public function update(Request $request, $id)
     {
-        $data = $request->all();
-        if ($request->hasFile('image')) {
-            $image = $request->image->store('gallery', 'public');
-            $about->deleteImage();
-            $data['image'] = $image;
-        };
-        $about->update($data);
-        session()->flash('success', 'About Updated Successfully');
-        return redirect(route("about.edit", 1));
+        //
     }
 
     /**

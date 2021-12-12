@@ -8,6 +8,7 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProductSizeController;
 use App\Http\Controllers\SaleController;
 use App\Http\Controllers\SizeController;
+use App\Http\Controllers\SocialMediaController;
 use App\Http\Controllers\TransactionController;
 use App\Http\Controllers\TransactionDetailController;
 use Illuminate\Support\Facades\Route;
@@ -36,7 +37,8 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
         'transaction' => TransactionController::class,
         'about' => AboutController::class,
         'sale' => SaleController::class,
-        'contact' => ContactController::class
+        'contact' => ContactController::class,
+        'social_media' => SocialMediaController::class,
     ]);
     Route::resource('gallery', GalleryController::class)->except(['create', 'store']);
     Route::get('gallery/create/{product}', [GalleryController::class, 'create'])->name('gallery.create');

@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\CreateSocialMediaRequest;
+use App\Models\SocialMedia;
 use Illuminate\Http\Request;
 
 class SocialMediaController extends Controller
@@ -13,7 +15,8 @@ class SocialMediaController extends Controller
      */
     public function index()
     {
-        
+        $social_medias = SocialMedia::all();
+        return view('social_media.index', compact('social_medias'));
     }
 
     /**
@@ -23,7 +26,7 @@ class SocialMediaController extends Controller
      */
     public function create()
     {
-        //
+        return view('social_media.create');
     }
 
     /**
@@ -32,9 +35,16 @@ class SocialMediaController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CreateSocialMediaRequest $request)
     {
-        //
+        $data = $request->all();
+        if ($request->hasFile('image')) {
+            $image = $request->image->store('gallery', 'public');
+            $data['image'] = $image;
+        };
+        SocialMedia::create($data);
+        session()->flash('success', 'Social Media Created Successfully');
+        return redirect(route('social_media.index'));
     }
 
     /**
@@ -54,9 +64,9 @@ class SocialMediaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(SocialMedia $social_media)
     {
-        //
+        return view('social_media.create', compact('social_media'));
     }
 
     /**
@@ -66,9 +76,17 @@ class SocialMediaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(CreateSocialMediaRequest $request, SocialMedia $social_media)
     {
-        //
+        $data = $request->all();
+        if ($request->hasFile('image')) {
+            $image = $request->image->store('gallery', 'public');
+            $social_media->deleteImage();
+            $data['image'] = $image;
+        };
+        $social_media->update($data);
+        session()->flash('success', 'Social Media Created Successfully');
+        return redirect(route('social_media.index'));
     }
 
     /**
@@ -77,8 +95,11 @@ class SocialMediaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(SocialMedia $social_media)
     {
-        //
+        $social_media->deleteImage();
+        $social_media->delete();
+        session()->flash('success', 'Social Media Deleted Successfully');
+        return redirect(route("social_media.index"));
     }
 }

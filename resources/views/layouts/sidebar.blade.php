@@ -86,6 +86,13 @@
                         <span class="nav-text">Contact</span>
                     </a>
                 </li>
+                <li class="{{Request::routeIs('social_media') ? 'active expand' : ''}}">
+                    <a class=" sidenav-item-link" href="{{route('social_media.index')}}" aria-expanded="false"
+                        aria-controls="social_media">
+                        <i class="mdi mdi-view-about-outline"></i>
+                        <span class="nav-text">Social Media</span>
+                    </a>
+                </li>
                 <li class="{{Request::routeIs('sale') ? 'active expand' : ''}}">
                     <a class=" sidenav-item-link" href="{{route('sale.edit',1)}}" aria-expanded="false"
                         aria-controls="sale">

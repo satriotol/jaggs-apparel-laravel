@@ -22,6 +22,6 @@ class ProductSize extends Model
     }
     public function getSizeNameAttribute()
     {
-        return $this->size->name;
+        return $this->size->name ?? "";
     }
 }

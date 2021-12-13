@@ -31,15 +31,13 @@ class ApiProductController extends Controller
     }
     public function indexGetAll()
     {
-        $products_category = ProductCategory::with('products', 'products.galleries', 'products.product_size')
-            ->whereHas('products', function ($q) {
-                $q->where('is_sale', 0)->limit(3);
-            })
-            ->whereHas('products.galleries')
-            ->whereHas('products.product_size')->get();
-        if ($products_category) {
+        $products = Product::with('galleries')
+            ->whereHas('galleries')->whereHas('product_size', function ($q) {
+                $q->where('qty', '>', '0');
+            })->orderBy('id', 'desc')->where('is_sale', 0)->limit(3)->get()->groupBy('category.name');
+        if ($products) {
             return ResponseFormatter::success([
-                'products_category' => $products_category,
+                'products' => $products,
             ], 'Data Product Berhasil Diambil');
         } else {
             return ResponseFormatter::error(null, 'Data produk tidak ada', 404);

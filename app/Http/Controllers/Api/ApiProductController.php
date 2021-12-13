@@ -33,7 +33,7 @@ class ApiProductController extends Controller
     {
         $products_category = ProductCategory::with('products', 'products.galleries', 'products.product_size')
             ->whereHas('products', function ($q) {
-                $q->where('is_sale', 0);
+                $q->where('is_sale', 0)->limit(3);
             })
             ->whereHas('products.galleries')
             ->whereHas('products.product_size')->get();

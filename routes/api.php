@@ -24,8 +24,10 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+Route::get('products/all', [ApiProductController::class, 'indexGetAll']);
 Route::get('products', [ApiProductController::class, 'index']);
 Route::get('products/is_sale', [ApiProductController::class, 'indexGetSale']);
+
 Route::get('provinces', [RajaOngkirController::class, 'provinces']);
 Route::get('cities', [RajaOngkirController::class, 'cities']);
 Route::get('cost', [RajaOngkirController::class, 'cost']);

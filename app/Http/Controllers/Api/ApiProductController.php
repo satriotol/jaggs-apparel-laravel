@@ -29,6 +29,22 @@ class ApiProductController extends Controller
             return ResponseFormatter::error(null, 'Data produk tidak ada', 404);
         };
     }
+    public function indexGetAll()
+    {
+        $products_category = ProductCategory::with('products', 'products.galleries', 'products.product_size')
+            ->whereHas('products', function ($q) {
+                $q->where('is_sale', 0);
+            })
+            ->whereHas('products.galleries')
+            ->whereHas('products.product_size')->get();
+        if ($products_category) {
+            return ResponseFormatter::success([
+                'products_category' => $products_category,
+            ], 'Data Product Berhasil Diambil');
+        } else {
+            return ResponseFormatter::error(null, 'Data produk tidak ada', 404);
+        };
+    }
     public function indexGetSale(Request $request)
     {
         $sale = Sale::first();

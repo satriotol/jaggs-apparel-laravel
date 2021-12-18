@@ -100,6 +100,13 @@
                         <span class="nav-text">Sale</span>
                     </a>
                 </li>
+                <li class="{{Request::routeIs('faq') ? 'active expand' : ''}}">
+                    <a class=" sidenav-item-link" href="{{route('faq.index')}}" aria-expanded="false"
+                        aria-controls="faq">
+                        <i class="mdi mdi-view-about-outline"></i>
+                        <span class="nav-text">FAQ</span>
+                    </a>
+                </li>
             </ul>
         </div>
     </div>

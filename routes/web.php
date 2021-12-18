@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AboutController;
 use App\Http\Controllers\ContactController;
+use App\Http\Controllers\FaqController;
 use App\Http\Controllers\GalleryController;
 use App\Http\Controllers\ProductCategoryController;
 use App\Http\Controllers\ProductController;
@@ -41,6 +42,7 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
         'social_media' => SocialMediaController::class,
     ]);
     Route::resource('gallery', GalleryController::class)->except(['create', 'store']);
+    Route::resource('faq', FaqController::class);
     Route::get('gallery/create/{product}', [GalleryController::class, 'create'])->name('gallery.create');
     Route::post('gallery/create/', [GalleryController::class, 'store'])->name('gallery.store');
     Route::get('quantity/create/{product}', [ProductSizeController::class, 'create'])->name('quantity.create');

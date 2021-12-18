@@ -107,6 +107,13 @@
                         <span class="nav-text">FAQ</span>
                     </a>
                 </li>
+                <li class="{{Request::routeIs('refund_policy') ? 'active expand' : ''}}">
+                    <a class=" sidenav-item-link" href="{{route('refund_policy.index')}}" aria-expanded="false"
+                        aria-controls="refund_policy">
+                        <i class="mdi mdi-view-about-outline"></i>
+                        <span class="nav-text">Refund Policy</span>
+                    </a>
+                </li>
             </ul>
         </div>
     </div>

@@ -19,6 +19,8 @@
     <link id="sleek-css" rel="stylesheet" href="{{ asset('assets/css/sleek.css') }}" />
     <link href="{{ asset('assets/img/favicon.png') }}" rel="shortcut icon" />
     <script src="{{ asset('assets/plugins/nprogress/nprogress.js') }}"></script>
+    <!-- include summernote css/js -->
+    <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
 </head>
 
 <body class="sidebar-fixed sidebar-dark header-light header-fixed" id="body">
@@ -59,10 +61,24 @@
     <script src="{{ asset('assets/js/date-range.js') }}"></script>
     <script src="{{ asset('assets/js/map.js') }}"></script>
     <script src="{{ asset('assets/js/custom.js') }}"></script>
-
-
-
-
+    <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#summernote').summernote({
+                toolbar: [
+                    ['font', ['bold', 'underline', 'clear']],
+                    ['para', ['ul', 'ol', 'paragraph']],
+                ],
+                callbacks: {
+                    onPaste: function (e) {
+                        var bufferText = ((e.originalEvent || e).clipboardData || window.clipboardData).getData('Text');
+                        e.preventDefault();
+                        document.execCommand('insertText', false, bufferText);
+                    }
+                }
+            });
+        });
+    </script>
 </body>
 
 </html>

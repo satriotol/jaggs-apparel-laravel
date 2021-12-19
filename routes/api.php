@@ -6,7 +6,9 @@ use App\Http\Controllers\Api\ApiProductController;
 use App\Http\Controllers\Api\ApiTransactionController;
 use App\Http\Controllers\Api\CheckOutController;
 use App\Http\Controllers\Api\ContactController;
+use App\Http\Controllers\Api\FaqController;
 use App\Http\Controllers\Api\RajaOngkirController;
+use App\Http\Controllers\Api\RefundPolicyController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -38,3 +40,7 @@ Route::get('productcategories', [ApiProductCategoryController::class, 'index']);
 Route::post('checkout', [CheckOutController::class, 'checkout']);
 Route::get('transactions', [ApiTransactionController::class, 'index']);
 Route::get('transactions/{uuid}', [ApiTransactionController::class, 'show']);
+
+Route::get('refund_policies', [RefundPolicyController::class, 'index']);
+
+Route::get('faqs', [FaqController::class, 'index']);

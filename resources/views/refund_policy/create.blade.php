@@ -1,9 +1,16 @@
 @extends('layouts.main')
+@push('css')
+<style>
+    .note-editor.note-airframe .note-editing-area .note-editable,
+    .note-editor.note-frame .note-editing-area .note-editable {
+        padding: 30px;
+    }
+</style>
+@endpush
 @section('content')
 <div class="card card-default">
     <div class="card-header card-header-border-bottom">
         <h2>Refund Policy Form</h2>
-
     </div>
     @include('partials.success')
     @include('partials.error')
@@ -20,8 +27,8 @@
                     value="{{isset($refund_policy) ? $refund_policy->title : ''}}" placeholder="Enter title">
             </div>
             <div class="form-group">
-                <label for="exampleFormControlInput1">Content</label>
-                <textarea id="summernote"
+                <label>Content</label>
+                <textarea id="summernote" class="form-control"
                     name="content">{{isset($refund_policy) ? $refund_policy->content : ''}}</textarea>
             </div>
             <div class="form-footer pt-4 pt-5 mt-4 text-right">

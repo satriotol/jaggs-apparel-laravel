@@ -20,7 +20,8 @@
     <link href="{{ asset('assets/img/favicon.png') }}" rel="shortcut icon" />
     <script src="{{ asset('assets/plugins/nprogress/nprogress.js') }}"></script>
     <!-- include summernote css/js -->
-    <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.css" rel="stylesheet">
+    @stack('css')
 </head>
 
 <body class="sidebar-fixed sidebar-dark header-light header-fixed" id="body">
@@ -61,13 +62,13 @@
     <script src="{{ asset('assets/js/date-range.js') }}"></script>
     <script src="{{ asset('assets/js/map.js') }}"></script>
     <script src="{{ asset('assets/js/custom.js') }}"></script>
-    <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.js"></script>
     <script>
         $(document).ready(function () {
             $('#summernote').summernote({
                 toolbar: [
                     ['font', ['bold', 'underline', 'clear']],
-                    ['para', ['ul', 'ol', 'paragraph']],
+                    ['para', [ 'ol', 'paragraph']],
                 ],
                 callbacks: {
                     onPaste: function (e) {

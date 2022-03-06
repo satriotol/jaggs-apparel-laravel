@@ -15,10 +15,13 @@ class UserSeeder extends Seeder
      */
     public function run()
     {
-        User::insert([
-            'name' => "satrio",
-            'email' => 'admin@admin.com',
-            'password' => Hash::make('admin')
-        ]);
+        $user = User::where('email', 'admin@admin.com')->first();
+        if ($user === null) {
+            User::insert([
+                'name' => "satrio",
+                'email' => 'admin@admin.com',
+                'password' => Hash::make('admin')
+            ]);
+        }
     }
 }

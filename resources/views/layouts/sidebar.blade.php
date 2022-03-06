@@ -25,7 +25,7 @@
                         <span class="nav-text">Dashboard</span>
                     </a>
                 </li>
-                <li class="{{Request::routeIs('home') ? 'active expand' : ''}}">
+                <li class="{{Request::routeIs('home.*') ? 'active' : ''}}">
                     <a class=" sidenav-item-link" href="{{route('home.edit',1)}}" aria-expanded="false"
                         aria-controls="home">
                         <i class="mdi mdi-view-home-outline"></i>
@@ -61,7 +61,7 @@
                         </div>
                     </ul>
                 </li>
-                <li class="has-sub">
+                {{-- <li class="has-sub">
                     <a class="sidenav-item-link" href="javascript:void(1)" data-toggle="collapse"
                         data-target="#transaction" aria-expanded="false" aria-controls="transaction">
                         <i class="mdi mdi-truck-delivery"></i>
@@ -78,15 +78,15 @@
                             </div>
                         </ul>
                     </a>
-                </li>
-                <li class="{{Request::routeIs('about') ? 'active expand' : ''}}">
+                </li> --}}
+                <li class="{{Request::routeIs('about.*') ? 'active' : ''}}">
                     <a class=" sidenav-item-link" href="{{route('about.edit',1)}}" aria-expanded="false"
                         aria-controls="about">
                         <i class="mdi mdi-view-about-outline"></i>
                         <span class="nav-text">About</span>
                     </a>
                 </li>
-                <li class="{{Request::routeIs('contact') ? 'active expand' : ''}}">
+                <li class="{{Request::routeIs('contact.*') ? 'active' : ''}}">
                     <a class=" sidenav-item-link" href="{{route('contact.index')}}" aria-expanded="false"
                         aria-controls="contact">
                         <i class="mdi mdi-view-about-outline"></i>
@@ -100,27 +100,27 @@
                         <span class="nav-text">Social Media</span>
                     </a>
                 </li>
-                <li class="{{Request::routeIs('sale') ? 'active expand' : ''}}">
+                {{-- <li class="{{Request::routeIs('sale') ? 'active expand' : ''}}">
                     <a class=" sidenav-item-link" href="{{route('sale.edit',1)}}" aria-expanded="false"
                         aria-controls="sale">
                         <i class="mdi mdi-view-about-outline"></i>
                         <span class="nav-text">Sale</span>
                     </a>
-                </li>
-                <li class="{{Request::routeIs('faq') ? 'active expand' : ''}}">
+                </li> --}}
+                {{-- <li class="{{Request::routeIs('faq') ? 'active expand' : ''}}">
                     <a class=" sidenav-item-link" href="{{route('faq.index')}}" aria-expanded="false"
                         aria-controls="faq">
                         <i class="mdi mdi-view-about-outline"></i>
                         <span class="nav-text">FAQ</span>
                     </a>
-                </li>
-                <li class="{{Request::routeIs('refund_policy') ? 'active expand' : ''}}">
+                </li> --}}
+                {{-- <li class="{{Request::routeIs('refund_policy') ? 'active expand' : ''}}">
                     <a class=" sidenav-item-link" href="{{route('refund_policy.index')}}" aria-expanded="false"
                         aria-controls="refund_policy">
                         <i class="mdi mdi-view-about-outline"></i>
                         <span class="nav-text">Refund Policy</span>
                     </a>
-                </li>
+                </li> --}}
             </ul>
         </div>
     </div>

@@ -28,7 +28,7 @@
                 <li class="{{Request::routeIs('home.*') ? 'active' : ''}}">
                     <a class=" sidenav-item-link" href="{{route('home.edit',1)}}" aria-expanded="false"
                         aria-controls="home">
-                        <i class="mdi mdi-view-home-outline"></i>
+                        <i class="mdi mdi-home"></i>
                         <span class="nav-text">Home</span>
                     </a>
                 </li>
@@ -82,21 +82,21 @@
                 <li class="{{Request::routeIs('about.*') ? 'active' : ''}}">
                     <a class=" sidenav-item-link" href="{{route('about.edit',1)}}" aria-expanded="false"
                         aria-controls="about">
-                        <i class="mdi mdi-view-about-outline"></i>
+                        <i class="mdi mdi-account-question"></i>
                         <span class="nav-text">About</span>
                     </a>
                 </li>
                 <li class="{{Request::routeIs('contact.*') ? 'active' : ''}}">
                     <a class=" sidenav-item-link" href="{{route('contact.index')}}" aria-expanded="false"
                         aria-controls="contact">
-                        <i class="mdi mdi-view-about-outline"></i>
+                        <i class="mdi mdi-contacts"></i>
                         <span class="nav-text">Contact</span>
                     </a>
                 </li>
-                <li class="{{Request::routeIs('social_media') ? 'active expand' : ''}}">
+                <li class="{{Request::routeIs('social_media.*') ? 'active' : ''}}">
                     <a class=" sidenav-item-link" href="{{route('social_media.index')}}" aria-expanded="false"
                         aria-controls="social_media">
-                        <i class="mdi mdi-view-about-outline"></i>
+                        <i class="mdi mdi-facebook"></i>
                         <span class="nav-text">Social Media</span>
                     </a>
                 </li>

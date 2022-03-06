@@ -7,6 +7,7 @@ use App\Http\Controllers\Api\ApiTransactionController;
 use App\Http\Controllers\Api\CheckOutController;
 use App\Http\Controllers\Api\ContactController;
 use App\Http\Controllers\Api\FaqController;
+use App\Http\Controllers\Api\HomeController;
 use App\Http\Controllers\Api\RajaOngkirController;
 use App\Http\Controllers\Api\RefundPolicyController;
 use Illuminate\Http\Request;
@@ -44,3 +45,5 @@ Route::get('transactions/{uuid}', [ApiTransactionController::class, 'show']);
 Route::get('refund_policies', [RefundPolicyController::class, 'index']);
 
 Route::get('faqs', [FaqController::class, 'index']);
+
+Route::get('home', [HomeController::class, 'index']);

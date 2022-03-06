@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Models\Home;
 use App\Models\ProductCategory;
 use Illuminate\Http\Request;
 
@@ -15,8 +16,9 @@ class ApiProductCategoryController extends Controller
                 $sq->where('qty', '>', '0');
             });
         })->get();
+        $logo = Home::pluck('logo')->first();
         if ($product_category) {
-            return ResponseFormatter::success($product_category, 'Data Product Category Berhasil Diambil');
+            return ResponseFormatter::success(['product_categories' => $product_category, 'logo' => $logo], 'Data Product Category Berhasil Diambil');
         } else {
             return ResponseFormatter::error(null, 'Data Product Tidak Ada', 404);
         }

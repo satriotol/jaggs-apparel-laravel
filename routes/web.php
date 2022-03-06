@@ -4,6 +4,7 @@ use App\Http\Controllers\AboutController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\FaqController;
 use App\Http\Controllers\GalleryController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProductCategoryController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProductSizeController;
@@ -38,6 +39,7 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
         'size' => SizeController::class,
         'transaction' => TransactionController::class,
         'about' => AboutController::class,
+        'home' => HomeController::class,
         'sale' => SaleController::class,
         'contact' => ContactController::class,
         'social_media' => SocialMediaController::class,

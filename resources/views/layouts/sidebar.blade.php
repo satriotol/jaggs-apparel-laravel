@@ -25,6 +25,13 @@
                         <span class="nav-text">Dashboard</span>
                     </a>
                 </li>
+                <li class="{{Request::routeIs('home') ? 'active expand' : ''}}">
+                    <a class=" sidenav-item-link" href="{{route('home.edit',1)}}" aria-expanded="false"
+                        aria-controls="home">
+                        <i class="mdi mdi-view-home-outline"></i>
+                        <span class="nav-text">Home</span>
+                    </a>
+                </li>
                 <li
                     class="has-sub {{Request::routeIs('product.*','productcategory.*','age.*','quantity.*','gallery.*','size.*') ? 'active expand' : ''}}">
                     <a class="sidenav-item-link" href="javascript:void(1)" data-toggle="collapse" data-target="#product"

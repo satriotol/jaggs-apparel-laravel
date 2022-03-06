@@ -14,6 +14,7 @@ use App\Http\Controllers\SizeController;
 use App\Http\Controllers\SocialMediaController;
 use App\Http\Controllers\TransactionController;
 use App\Http\Controllers\TransactionDetailController;
+use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -54,4 +55,8 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
 
     Route::get('transaction/create/{transaction}', [TransactionDetailController::class, 'create'])->name('transactiondetail.create');
     Route::post('transaction/store/{transaction}', [TransactionDetailController::class, 'store'])->name('transactiondetail.store');
+
+    Route::get('/foo', function () {
+        Artisan::call('storage:link');
+    });
 });

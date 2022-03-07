@@ -5,7 +5,7 @@
         <div class="card card-table-border-none" id="recent-orders">
             <div class="card-header justify-content-between">
                 <h2>How To Order</h2>
-                @if ($how_to_orders === null)
+                @if ($how_to_orders->count() < 1)
                     <a class="btn btn-primary" href="{{ route('how_to_order.create') }}">
                         Create
                     </a>

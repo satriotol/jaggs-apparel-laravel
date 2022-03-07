@@ -96,7 +96,7 @@
                 <li class="{{ Request::routeIs('how_to_order.*') ? 'active' : '' }}">
                     <a class=" sidenav-item-link" href="{{ route('how_to_order.index') }}" aria-expanded="false"
                         aria-controls="how_to_order">
-                        <i class="mdi mdi-facebook"></i>
+                        <i class="mdi mdi-access-point"></i>
                         <span class="nav-text">How To Order</span>
                     </a>
                 </li>

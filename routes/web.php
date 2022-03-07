@@ -5,6 +5,7 @@ use App\Http\Controllers\ContactController;
 use App\Http\Controllers\FaqController;
 use App\Http\Controllers\GalleryController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\HowToOrderController;
 use App\Http\Controllers\ProductCategoryController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProductSizeController;
@@ -44,6 +45,7 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
         'sale' => SaleController::class,
         'contact' => ContactController::class,
         'social_media' => SocialMediaController::class,
+        'how_to_order' => HowToOrderController::class
     ]);
     Route::resource('gallery', GalleryController::class)->except(['create', 'store']);
     Route::resource('faq', FaqController::class);

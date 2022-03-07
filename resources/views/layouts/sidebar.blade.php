@@ -18,43 +18,43 @@
 
             <!-- sidebar menu -->
             <ul class="nav sidebar-inner" id="sidebar-menu">
-                <li class="{{Request::routeIs('dashboard') ? 'active expand' : ''}}">
-                    <a class=" sidenav-item-link" href="{{route('dashboard')}}" aria-expanded="false"
+                <li class="{{ Request::routeIs('dashboard') ? 'active expand' : '' }}">
+                    <a class=" sidenav-item-link" href="{{ route('dashboard') }}" aria-expanded="false"
                         aria-controls="dashboard">
                         <i class="mdi mdi-view-dashboard-outline"></i>
                         <span class="nav-text">Dashboard</span>
                     </a>
                 </li>
-                <li class="{{Request::routeIs('home.*') ? 'active' : ''}}">
-                    <a class=" sidenav-item-link" href="{{route('home.edit',1)}}" aria-expanded="false"
+                <li class="{{ Request::routeIs('home.*') ? 'active' : '' }}">
+                    <a class=" sidenav-item-link" href="{{ route('home.edit', 1) }}" aria-expanded="false"
                         aria-controls="home">
                         <i class="mdi mdi-home"></i>
                         <span class="nav-text">Home</span>
                     </a>
                 </li>
                 <li
-                    class="has-sub {{Request::routeIs('product.*','productcategory.*','age.*','quantity.*','gallery.*','size.*') ? 'active expand' : ''}}">
+                    class="has-sub {{ Request::routeIs('product.*', 'productcategory.*', 'age.*', 'quantity.*', 'gallery.*', 'size.*')? 'active expand': '' }}">
                     <a class="sidenav-item-link" href="javascript:void(1)" data-toggle="collapse" data-target="#product"
                         aria-expanded="false" aria-controls="product">
                         <i class="mdi mdi-tshirt-crew-outline"></i>
                         <span class="nav-text">Product</span> <b class="caret"></b>
                     </a>
-                    <ul class="collapse {{Request::routeIs('product.*','productcategory.*','age.*','quantity.*','gallery.*','size.*') ? 'show' : ''}}"
+                    <ul class="collapse {{ Request::routeIs('product.*', 'productcategory.*', 'age.*', 'quantity.*', 'gallery.*', 'size.*')? 'show': '' }}"
                         id="product" data-parent="#sidebar-menu">
                         <div class="sub-menu">
-                            <li class="{{Request::routeIs('product.*','quantity.*','gallery.*') ? 'active' : ''}}">
-                                <a class="sidenav-item-link" href="{{route('product.index')}}">
+                            <li class="{{ Request::routeIs('product.*', 'quantity.*', 'gallery.*') ? 'active' : '' }}">
+                                <a class="sidenav-item-link" href="{{ route('product.index') }}">
                                     <span class="nav-text">All Product</span>
 
                                 </a>
                             </li>
-                            <li class="{{Request::routeIs('productcategory.*') ? 'active' : ''}}">
-                                <a class="sidenav-item-link" href="{{route('productcategory.index')}}">
+                            <li class="{{ Request::routeIs('productcategory.*') ? 'active' : '' }}">
+                                <a class="sidenav-item-link" href="{{ route('productcategory.index') }}">
                                     <span class="nav-text">Product Category</span>
                                 </a>
                             </li>
-                            <li class="{{Request::routeIs('size.*') ? 'active' : ''}}">
-                                <a class="sidenav-item-link" href="{{route('size.index')}}">
+                            <li class="{{ Request::routeIs('size.*') ? 'active' : '' }}">
+                                <a class="sidenav-item-link" href="{{ route('size.index') }}">
                                     <span class="nav-text">Product Size</span>
                                 </a>
                             </li>
@@ -79,22 +79,29 @@
                         </ul>
                     </a>
                 </li> --}}
-                <li class="{{Request::routeIs('about.*') ? 'active' : ''}}">
-                    <a class=" sidenav-item-link" href="{{route('about.edit',1)}}" aria-expanded="false"
+                <li class="{{ Request::routeIs('about.*') ? 'active' : '' }}">
+                    <a class=" sidenav-item-link" href="{{ route('about.edit', 1) }}" aria-expanded="false"
                         aria-controls="about">
                         <i class="mdi mdi-account-question"></i>
                         <span class="nav-text">About</span>
                     </a>
                 </li>
-                <li class="{{Request::routeIs('contact.*') ? 'active' : ''}}">
-                    <a class=" sidenav-item-link" href="{{route('contact.index')}}" aria-expanded="false"
+                <li class="{{ Request::routeIs('contact.*') ? 'active' : '' }}">
+                    <a class=" sidenav-item-link" href="{{ route('contact.index') }}" aria-expanded="false"
                         aria-controls="contact">
                         <i class="mdi mdi-contacts"></i>
                         <span class="nav-text">Contact</span>
                     </a>
                 </li>
-                <li class="{{Request::routeIs('social_media.*') ? 'active' : ''}}">
-                    <a class=" sidenav-item-link" href="{{route('social_media.index')}}" aria-expanded="false"
+                <li class="{{ Request::routeIs('how_to_order.*') ? 'active' : '' }}">
+                    <a class=" sidenav-item-link" href="{{ route('how_to_order.index') }}" aria-expanded="false"
+                        aria-controls="how_to_order">
+                        <i class="mdi mdi-facebook"></i>
+                        <span class="nav-text">How To Order</span>
+                    </a>
+                </li>
+                <li class="{{ Request::routeIs('social_media.*') ? 'active' : '' }}">
+                    <a class=" sidenav-item-link" href="{{ route('social_media.index') }}" aria-expanded="false"
                         aria-controls="social_media">
                         <i class="mdi mdi-facebook"></i>
                         <span class="nav-text">Social Media</span>

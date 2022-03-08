@@ -17,7 +17,7 @@
                 @endif
                 <div class="form-group">
                     <label>Content</label>
-                    <textarea id="summernote" class="form-control"
+                    <textarea id="summernote"
                         name="content">{{ isset($how_to_order) ? $how_to_order->content : '' }}</textarea>
                 </div>
                 <div class="form-footer pt-4 pt-5 mt-4 text-right">

@@ -26,8 +26,10 @@
 
 <body class="sidebar-fixed sidebar-dark header-light header-fixed" id="body">
     <script>
-        NProgress.configure({ showSpinner: false });
-      NProgress.start();
+        NProgress.configure({
+            showSpinner: false
+        });
+        NProgress.start();
     </script>
     <div class="mobile-sticky-body-overlay"></div>
     <div class="wrapper">
@@ -64,15 +66,18 @@
     <script src="{{ asset('assets/js/custom.js') }}"></script>
     <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.js"></script>
     <script>
-        $(document).ready(function () {
+        $(document).ready(function() {
             $('#summernote').summernote({
                 toolbar: [
                     ['font', ['bold', 'underline', 'clear']],
-                    ['para', [ 'ol', 'paragraph']],
+                    ['para', ['ol', 'paragraph']],
                 ],
+                tabsize: 2,
+                height: 100,
                 callbacks: {
-                    onPaste: function (e) {
-                        var bufferText = ((e.originalEvent || e).clipboardData || window.clipboardData).getData('Text');
+                    onPaste: function(e) {
+                        var bufferText = ((e.originalEvent || e).clipboardData || window.clipboardData)
+                            .getData('Text');
                         e.preventDefault();
                         document.execCommand('insertText', false, bufferText);
                     }

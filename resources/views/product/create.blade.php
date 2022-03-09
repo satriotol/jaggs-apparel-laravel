@@ -42,7 +42,7 @@
                     @endforeach
                 </select>
             </div>
-            <div class="form-group">
+            <div class="form-group d-none">
                 <label>Is Sale ?</label>
                 <select name="is_sale" class="form-control" required>
                     <option value="0" @if (isset($product)) @if (0===$product->is_sale)
@@ -57,9 +57,9 @@
                     value="{{isset($product) ? $product->price : ''}}" id=" exampleFormControlInput1"
                     placeholder="Enter Product Price">
             </div>
-            <div class="form-group">
+            <div class="form-group d-none">
                 <label>New Price</label>
-                <input type="number" class="form-control" required name="new_price"
+                <input type="number" class="form-control" name="new_price"
                     value="{{isset($product) ? $product->new_price : ''}}" id=" exampleFormControlInput1"
                     placeholder="Enter Product Price">
             </div>

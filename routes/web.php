@@ -11,6 +11,7 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProductSizeController;
 use App\Http\Controllers\RefundPolicyController;
 use App\Http\Controllers\SaleController;
+use App\Http\Controllers\SettingController;
 use App\Http\Controllers\SizeController;
 use App\Http\Controllers\SocialMediaController;
 use App\Http\Controllers\TransactionController;
@@ -47,6 +48,8 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
         'social_media' => SocialMediaController::class,
         'how_to_order' => HowToOrderController::class
     ]);
+    Route::get('setting', [SettingController::class, 'index'])->name('setting.index');
+    Route::post('setting', [SettingController::class, 'update'])->name('setting.update');
     Route::resource('gallery', GalleryController::class)->except(['create', 'store']);
     Route::resource('faq', FaqController::class);
     Route::resource('refund_policy', RefundPolicyController::class);

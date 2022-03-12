@@ -33,7 +33,7 @@
                 <div class="form-group">
                     <label for="exampleFormControlSelect12">Category</label>
                     <select class="form-control" id="exampleFormControlSelect12" required name="category_id">
-                        <option>Select Category</option>
+                        <option value="">Select Category</option>
                         @foreach ($categories as $category)
                             <option value="{{ $category->id }}"
                                 @isset($product) @if ($category->id === $product->category_id) selected @endif

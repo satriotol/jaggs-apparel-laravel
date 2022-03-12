@@ -54,89 +54,80 @@
                     </div>
                     <div class="form-group">
                         <label for="exampleFormControlSelect12">Category</label>
-                        <select class="form-control" required disabled name="category_id">
-                            <option value="">Select Category</option>
-                            @foreach ($categories as $category)
-                                <option value="{{ $category->id }}"
-                                    @isset($product) @if ($category->name === $product->category->name) selected @endif
-                                @endisset>
-                                {{ $category->name }}
-                            </option>
-                        @endforeach
-                    </select>
+                        <input type="text" class="form-control" disabled value="{{ $product->category_name }}">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="card card-table-border-none" id="recent-orders">
+                <div class="card-header justify-content-between">
+                    <h2>Product Quantity</h2>
+                    <a class="btn btn-primary" href="{{ route('quantity.create', $product->id) }}">
+                        Create
+                    </a>
+                </div>
+                <div class="card-body pt-0 pb-5">
+                    <table class="table card-table table-responsive table-responsive-large" style="width:100%">
+                        <thead>
+                            <tr>
+                                <th>Size</th>
+                                <th>Qty</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach ($sizes as $size)
+                                <tr>
+                                    <td>{{ $size->name }}</td>
+                                    <td>
+                                        @foreach ($size->product_size as $ps)
+                                            @if ($ps->product_id == $product->id)
+                                                {{ $ps->qty }}
+                                            @endif
+                                        @endforeach
+                                    </td>
+                                </tr>
+                            @endforeach
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="card card-table-border-none" id="recent-orders">
+                <div class="card-header justify-content-between">
+                    <h2>Product Gallery</h2>
+                    <a class="btn btn-primary" href="{{ route('gallery.create', $product->id) }}">
+                        Create
+                    </a>
+                </div>
+                <div class="card-body pt-0 pb-5">
+                    <table class="table card-table table-responsive table-responsive-large" style="width:100%">
+                        <thead>
+                            <tr>
+                                <th>Photo</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach ($galleries as $gallery)
+                                <tr>
+                                    <td><img src="{{ $gallery->photo }}" height="100px" alt=""></td>
+                                    <td>
+                                        <form action="{{ route('gallery.destroy', $gallery->id) }}"
+                                            class="d-inline" method="POST">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button class="badge badge-danger" onclick="return confirm('Are you sure?')"
+                                                type="submit">Delete</button>
+                                        </form>
+                                    </td>
+                                </tr>
+                            @endforeach
+
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div>
     </div>
-    <div class="col-md-6">
-        <div class="card card-table-border-none" id="recent-orders">
-            <div class="card-header justify-content-between">
-                <h2>Product Quantity</h2>
-                <a class="btn btn-primary" href="{{ route('quantity.create', $product->id) }}">
-                    Create
-                </a>
-            </div>
-            <div class="card-body pt-0 pb-5">
-                <table class="table card-table table-responsive table-responsive-large" style="width:100%">
-                    <thead>
-                        <tr>
-                            <th>Size</th>
-                            <th>Qty</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @foreach ($sizes as $size)
-                            <tr>
-                                <td>{{ $size->name }}</td>
-                                <td>
-                                    @foreach ($size->product_size as $ps)
-                                        @if ($ps->product_id == $product->id)
-                                            {{ $ps->qty }}
-                                        @endif
-                                    @endforeach
-                                </td>
-                            </tr>
-                        @endforeach
-
-                    </tbody>
-                </table>
-            </div>
-        </div>
-        <div class="card card-table-border-none" id="recent-orders">
-            <div class="card-header justify-content-between">
-                <h2>Product Gallery</h2>
-                <a class="btn btn-primary" href="{{ route('gallery.create', $product->id) }}">
-                    Create
-                </a>
-            </div>
-            <div class="card-body pt-0 pb-5">
-                <table class="table card-table table-responsive table-responsive-large" style="width:100%">
-                    <thead>
-                        <tr>
-                            <th>Photo</th>
-                            <th>Action</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @foreach ($galleries as $gallery)
-                            <tr>
-                                <td><img src="{{ $gallery->photo }}" height="100px" alt=""></td>
-                                <td>
-                                    <form action="{{ route('gallery.destroy', $gallery->id) }}"
-                                        class="d-inline" method="POST">
-                                        @csrf
-                                        @method('DELETE')
-                                        <button class="badge badge-danger" onclick="return confirm('Are you sure?')"
-                                            type="submit">Delete</button>
-                                    </form>
-                                </td>
-                            </tr>
-                        @endforeach
-
-                    </tbody>
-                </table>
-            </div>
-        </div>
-    </div>
-</div>
 @endsection

@@ -25,7 +25,7 @@ class ProductUpdateRequest extends FormRequest
     {
         return [
             'price' => 'required|integer',
-            'name' => 'required|unique:products,name,' . $this->product->id,
+            'name' => 'required',
             'description' => 'required',
             'category_id' => 'required',
         ];

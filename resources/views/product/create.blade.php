@@ -32,6 +32,7 @@
                 </div>
                 <div class="form-group">
                     <label for="exampleFormControlSelect12">Category</label>
+                    {{ $product->category_id }}
                     <select class="form-control" id="exampleFormControlSelect12" required name="category_id">
                         <option>Select Category</option>
                         @foreach ($categories as $category)

@@ -31,15 +31,12 @@
                         value="{{ isset($product) ? $product->weight : '' }}">
                 </div>
                 <div class="form-group">
-                    <label>Category</label> <br>
-                    {{ $categories }} <br>
-                    {{ $product->category_id }}
+                    <label>Category</label>
                     <select class="form-control" required name="category_id">
                         <option value="">Select Category</option>
                         @foreach ($categories as $category)
                             <option value="{{ $category->id }}"
-                                @isset($product) @if ($category->id === $product->category_id) selected @endif
-                                @endisset>
+                                @isset($product) @if ($category->name === $product->category->name) selected @endif @endisset>
                             {{ $category->name }}
                         </option>
                     @endforeach

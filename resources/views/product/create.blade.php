@@ -35,10 +35,10 @@
                     <select class="form-control" id="exampleFormControlSelect12" required name="category_id">
                         <option value="">Select Category</option>
                         @foreach ($categories as $category)
-                            <option value="{{ $category->id }}"
-                                @isset($product) @if ($category->id === $product->category_id) selected @endif
-                            @endisset>
-                            {{ $category->name }}
+                            <option value="{{$category->id}}"
+                                @isset($product) @if ($category->id === $product->category_id)
+                            selected @endif
+                            @endisset>{{$category->name}}
                         </option>
                     @endforeach
                 </select>

@@ -23,7 +23,7 @@
                         value="{{isset($product) ? $product->price : ''}}" id=" exampleFormControlInput1"
                         placeholder="Enter Product Price">
                 </div>
-                <div class="form-group">
+                <div class="form-group d-none">
                     <label for="exampleFormControlInput1">New Price</label>
                     <input type="number" disabled class="form-control" name="new_price"
                         value="{{isset($product) ? $product->new_price : ''}}" id=" exampleFormControlInput1"
@@ -39,7 +39,7 @@
                     <input type="number" class="form-control" name="weight" disabled
                         value="{{isset($product) ? $product->weight : ''}}">
                 </div>
-                <div class="form-group">
+                <div class="form-group d-none">
                     <label>Is Sale ?</label>
                     <select name="is_sale" class="form-control" required disabled>
                         <option value="0" @if (isset($product)) @if (0===$product->is_sale)

@@ -35,7 +35,7 @@
                     <select class="form-control" id="exampleFormControlSelect12" required name="category_id">
                         <option>Select Category</option>
                         @foreach ($categories as $category)
-                            <option value="{{ $category->id }}" @if ($category->id === $product->category_id) selected @endif>
+                            <option value="{{ $category->id }}" @if (isset($product)) @if ($category->id == $product->category_id) selected @endif @endif>
                                 {{ $category->name }}
                             </option>
                         @endforeach

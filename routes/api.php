@@ -49,3 +49,4 @@ Route::get('refund_policies', [RefundPolicyController::class, 'index']);
 Route::get('faqs', [FaqController::class, 'index']);
 
 Route::get('home', [HomeController::class, 'index']);
+Route::get('send_email', [HomeController::class, 'send_email']);

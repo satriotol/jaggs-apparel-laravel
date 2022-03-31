@@ -7,6 +7,7 @@ use App\Http\Resources\ProductCollection;
 use App\Http\Resources\ProductResource;
 use App\Models\Product;
 use App\Models\ProductCategory;
+use App\Models\ProductSize;
 use App\Models\Sale;
 use Illuminate\Http\Request;
 
@@ -62,7 +63,10 @@ class ApiProductController extends Controller
     }
     public function detail($slug)
     {
-        $product = Product::with(['category', 'galleries', 'product_size'])->where('slug', $slug)->first();
+        $product = Product::with(['category', 'galleries', 'product_size' => function ($q){
+            $q->where('qty', '>', 0);
+        }])->where('slug', $slug)->first();
+        // $product_size = ProductSize::where('product_id', $product->id)->where('qty', '>', '0')->get();
         $other_products = Product::with(['category', 'galleries', 'product_size'])->whereHas('galleries')
             ->whereHas('product_size', function ($q) {
                 $q->where('qty', '>', '0');

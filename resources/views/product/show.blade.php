@@ -30,11 +30,6 @@
                             placeholder="Enter Product Price">
                     </div>
                     <div class="form-group">
-                        <label for="exampleFormControlTextarea1">Description</label>
-                        <textarea class="form-control" disabled name="description" id="exampleFormControlTextarea1"
-                            rows="3">{{ isset($product) ? $product->description : '' }}</textarea>
-                    </div>
-                    <div class="form-group">
                         <label for="exampleFormControlTextarea1">Weight</label>
                         <input type="number" class="form-control" name="weight" disabled
                             value="{{ isset($product) ? $product->weight : '' }}">

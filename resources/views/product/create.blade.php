@@ -22,8 +22,7 @@
                 </div>
                 <div class="form-group">
                     <label for="exampleFormControlTextarea1">Description</label>
-                    <textarea class="form-control" required name="description" id="exampleFormControlTextarea1"
-                        rows="3">{{ isset($product) ? $product->description : '' }}</textarea>
+                    <textarea id="summernote" name="description">{{ isset($product) ? $product->description : '' }}</textarea>
                 </div>
                 <div class="form-group">
                     <label for="exampleFormControlTextarea1">Weight</label>
@@ -36,7 +35,8 @@
                         <option value="">Select Category</option>
                         @foreach ($categories as $category)
                             <option value="{{ $category->id }}"
-                                @isset($product) @if ($category->name === $product->category->name) selected @endif @endisset>
+                                @isset($product) @if ($category->name === $product->category->name) selected @endif
+                            @endisset>
                             {{ $category->name }}
                         </option>
                     @endforeach

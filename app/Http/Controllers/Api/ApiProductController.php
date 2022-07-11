@@ -70,7 +70,7 @@ class ApiProductController extends Controller
         $other_products = Product::with(['category', 'galleries', 'product_size'])->whereHas('galleries')
             ->whereHas('product_size', function ($q) {
                 $q->where('qty', '>', '0');
-            })->orderBy('id', 'desc')->where('slug', '!=', $slug)->get()->take(4);
+            })->where('category_id', $product->category_id)->orderBy('id', 'desc')->where('slug', '!=', $slug)->get()->take(4);
         if ($product) {
             return ResponseFormatter::success([
                 'products' => $product,

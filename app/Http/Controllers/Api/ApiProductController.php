@@ -35,7 +35,7 @@ class ApiProductController extends Controller
         $products = Product::with('galleries')
             ->whereHas('galleries')->whereHas('product_size', function ($q) {
                 $q->where('qty', '>', '0');
-            })->orderBy('id', 'desc')->limit(3)->get()->groupBy('category.name');
+            })->orderBy('id', 'desc')->get()->groupBy('category.name');
         if ($products) {
             return ResponseFormatter::success([
                 'products' => $products,

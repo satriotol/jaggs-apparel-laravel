@@ -66,22 +66,30 @@
     <script src="{{ asset('assets/js/custom.js') }}"></script>
     <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.js"></script>
     <script>
+        // $(document).ready(function() {
+        //     $('#summernote').summernote({
+        //         toolbar: [
+        //             ['font', ['bold', 'underline', 'clear']],
+        //             ['para', ['ol', 'paragraph']],
+        //         ],
+        //         tabsize: 2,
+        //         height: 100,
+        //         callbacks: {
+        //             onPaste: function(e) {
+        //                 var bufferText = ((e.originalEvent || e).clipboardData || window.clipboardData)
+        //                     .getData('Text');
+        //                 e.preventDefault();
+        //                 document.execCommand('insertText', false, bufferText);
+        //             }
+        //         }
+        //     });
+        // });
         $(document).ready(function() {
             $('#summernote').summernote({
                 toolbar: [
                     ['font', ['bold', 'underline', 'clear']],
                     ['para', ['ol', 'paragraph']],
                 ],
-                tabsize: 2,
-                height: 100,
-                callbacks: {
-                    onPaste: function(e) {
-                        var bufferText = ((e.originalEvent || e).clipboardData || window.clipboardData)
-                            .getData('Text');
-                        e.preventDefault();
-                        document.execCommand('insertText', false, bufferText);
-                    }
-                }
             });
         });
     </script>

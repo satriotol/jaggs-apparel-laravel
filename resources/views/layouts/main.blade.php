@@ -88,7 +88,6 @@
             $('#summernote').summernote({
                 toolbar: [
                     ['font', ['bold', 'underline', 'clear']],
-                    ['para', ['ol', 'paragraph']],
                 ],
             });
         });
